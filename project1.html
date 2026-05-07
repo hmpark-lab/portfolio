@@ -145,6 +145,117 @@
             color: #1d4ed8;
         }
 
+        /* ========================= */
+        /* 시장 분석 포지셔닝 맵 */
+        /* ========================= */
+
+        .pos-map-container {
+            position: relative;
+            width: 100%;
+            height: 420px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: linear-gradient(to top right, #ffffff, #f8fafc);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .axis-label {
+            position: absolute;
+            font-size: 11px;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .axis-y-top {
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .axis-y-bottom {
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .axis-x-left {
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .axis-x-right {
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: right;
+        }
+
+        .map-item {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .map-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 999px;
+        }
+
+        .bg-slate-400 {
+            background: #94a3b8;
+        }
+
+        .bg-slate-500 {
+            background: #64748b;
+        }
+
+        .bg-indigo-600 {
+            background: #4f46e5;
+        }
+
+        .scale-150 {
+            transform: scale(1.5);
+        }
+
+        .animate-pulse {
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .map-label {
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .text-slate-500 {
+            color: #64748b;
+        }
+
+        .text-slate-600 {
+            color: #475569;
+        }
+
+        .text-indigo-700 {
+            color: #4338ca;
+        }
+
+        .text-sm {
+            font-size: 13px;
+        }
+
         footer {
             margin-top: 60px;
             padding-top: 20px;
@@ -419,6 +530,18 @@
             .prototype-wrap {
                 padding: 20px;
             }
+
+            .pos-map-container {
+                height: 360px;
+            }
+
+            .axis-label {
+                font-size: 10px;
+            }
+
+            .map-label {
+                font-size: 10px;
+            }
         }
 
         @media print {
@@ -452,7 +575,80 @@
         </header>
 
         <section>
-            <h2>1. 프로젝트 개요</h2>
+            <h2>1. 시장 분석 및 서비스 타당성</h2>
+            <div class="summary-box">
+                <p>본 프로젝트의 타당성을 확보하기 위해 기존 핀테크 서비스와 '추천 방식' 및 '데이터 정밀도' 측면에서 비교 분석을 실시했습니다.</p>
+            </div>
+
+            <div class="pos-map-container">
+                <div style="position: absolute; width: 1px; height: 90%; background: #e2e8f0; left: 50%; top: 5%;"></div>
+                <div style="position: absolute; height: 1px; width: 90%; background: #e2e8f0; top: 50%; left: 5%;"></div>
+
+                <div class="axis-label axis-y-top">실적/한도 포함 실질 혜택 산출 (High Precision)</div>
+                <div class="axis-label axis-y-bottom">단순 혜택률 표시 (Basic Info)</div>
+                <div class="axis-label axis-x-left">일반적 카테고리 추천</div>
+                <div class="axis-label axis-x-right">개인별 세부 지출액 추천 (Personalized)</div>
+
+                <div class="map-item" style="bottom: 25%; left: 20%;">
+                    <div class="map-dot bg-slate-400"></div>
+                    <span class="map-label text-slate-500">카드고릴라</span>
+                </div>
+                <div class="map-item" style="bottom: 35%; left: 30%;">
+                    <div class="map-dot bg-slate-500"></div>
+                    <span class="map-label text-slate-600">토스 / 뱅크샐러드</span>
+                </div>
+                <div class="map-item" style="bottom: 40%; left: 40%;">
+                    <div class="map-dot bg-slate-500"></div>
+                    <span class="map-label text-slate-600">핀크 / 페이코</span>
+                </div>
+
+                <div class="map-item" style="top: 15%; right: 15%;">
+                    <div class="map-dot bg-indigo-600 scale-150 animate-pulse"></div>
+                    <span class="map-label text-indigo-700 text-sm">Smart Recommender (본 서비스)</span>
+                    <span style="font-size: 10px; color: #4f46e5; font-weight: 600;">Blue Ocean 독점 점유</span>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>비교 지표</th>
+                        <th style="width: 25%;">기존 핀테크 앱 (Toss 등)</th>
+                        <th style="width: 25%;">금융 플랫폼 (카드고릴라 등)</th>
+                        <th style="background: #eef2ff; color: #4f46e5;">본 프로젝트 (Smart Recommender)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="center"><strong>추천 로직</strong></td>
+                        <td>과거 소비 카테고리 매칭</td>
+                        <td>카드사 혜택 DB 랭킹순</td>
+                        <td style="background: #f8fafc;"><strong>개인별 예상 지출 시뮬레이션</strong></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><strong>실적 조건 반영</strong></td>
+                        <td>단순 실적 구간 안내 (텍스트)</td>
+                        <td>약관 명시 수준</td>
+                        <td style="background: #f8fafc;"><strong>실시간 실적구간 자동 매칭 연산</strong></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><strong>할인 한도 계산</strong></td>
+                        <td>반영 불가 (단순 할인율 표시)</td>
+                        <td>미반영 (정성적 정보 제공)</td>
+                        <td style="background: #f8fafc;"><strong>통합 할인 한도 기반 최종 혜택 산출</strong></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><strong>데이터 신뢰도</strong></td>
+                        <td>실제 수령액과 오차 발생 가능</td>
+                        <td>일반적인 혜택 정보 위주</td>
+                        <td style="background: #f8fafc;"><strong>실질 피킹률(Real Picking Rate) 도출</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>2. 프로젝트 개요</h2>
             <div class="summary-box">
                 <p><strong>수행 기간:</strong> 2026. 05. 11 ~ 2026. 06. 18 (약 5.5주)</p>
                 <p><strong>분석 대상:</strong> 주요 카드 3사 (신한카드, KB국민카드, 우리카드) 주력 상품군</p>
@@ -462,7 +658,7 @@
         </section>
 
         <section>
-            <h2>2. 배경 및 기존 서비스의 한계</h2>
+            <h2>3. 배경 및 기존 서비스의 한계</h2>
             <div class="summary-box">
                 <p><strong>현황:</strong> 기존 핀테크 앱의 카드 추천 서비스는 사용자의 주 지출 카테고리(예: 쇼핑)를 파악하여 해당 카테고리 혜택이 높은 카드를 우선적으로 추천함.</p>
                 <p><strong>한계점:</strong></p>
@@ -476,7 +672,7 @@
         </section>
 
         <section>
-            <h2>3. 주차별 상세 운영 계획</h2>
+            <h2>4. 주차별 상세 운영 계획</h2>
             <table>
                 <thead>
                     <tr>
@@ -548,7 +744,7 @@
         </section>
 
         <section>
-            <h2>4. 데이터 분석 및 수치 정형화 전략</h2>
+            <h2>5. 데이터 분석 및 수치 정형화 전략</h2>
             <div class="methodology">
                 <div class="method-item">
                     <h4>비정형 데이터의 수치화</h4>
@@ -562,7 +758,7 @@
         </section>
 
         <section>
-            <h2>5. 기대 효과 및 활용 방안</h2>
+            <h2>6. 기대 효과 및 활용 방안</h2>
             <ul style="padding-left: 20px; font-size: 15px;">
                 <li><strong>데이터 분석 역량 증명:</strong> 비즈니스 로직을 알고리즘으로 모델링하고 데이터를 기반으로 분석하는 역량 입증</li>
                 <li><strong>정보 불균형 해소:</strong> 사용자가 인지하지 못한 카드사별 세부 제외 조항까지 반영한 정밀한 정보 제공</li>
@@ -571,7 +767,7 @@
         </section>
 
         <section>
-            <h2>6. 예상 산출물(안) (Live Interactive Prototype)</h2>
+            <h2>7. 기대 산출물(안) (Live Interactive Prototype)</h2>
             <p style="margin-bottom: 20px; color: #64748b; font-size: 15px;">
                 본 프로젝트를 통해 개발될 실제 서비스의 동작 모델입니다. <br>
                 <strong>왼쪽의 슬라이더를 조절하면 오른쪽의 카드 순위와 예상 혜택이 실시간으로 업데이트됩니다.</strong>
