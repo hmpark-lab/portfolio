@@ -462,7 +462,21 @@
         </section>
 
         <section>
-            <h2>2. 주차별 상세 운영 계획</h2>
+            <h2>2. 배경 및 기존 서비스의 한계</h2>
+            <div class="summary-box">
+                <p><strong>현황:</strong> 기존 핀테크 앱의 카드 추천 서비스는 사용자의 주 지출 카테고리(예: 쇼핑)를 파악하여 해당 카테고리 혜택이 높은 카드를 우선적으로 추천함.</p>
+                <p><strong>한계점:</strong></p>
+                <ul style="font-size: 15px; padding-left: 20px; margin-top: 10px;">
+                    <li style="margin-bottom: 8px;"><strong>복합 지출 구조 미반영:</strong> 특정 카테고리 외의 전체적인 지출 규모를 고려하지 않아 실제 피킹률 파악이 어려움.</li>
+                    <li style="margin-bottom: 8px;"><strong>실적 조건의 간과:</strong> 카드사별 상이한 전월 실적 달성 여부를 시뮬레이션하지 않아 조건 미달 시 혜택이 0원이 되는 리스크를 노출함.</li>
+                    <li style="margin-bottom: 8px;"><strong>할인 한도의 부재:</strong> 카테고리별 할인율만 강조하고 '통합 할인 한도'를 고려하지 않아, 실질적으로 체감하는 혜택 총액 산출이 불가능함.</li>
+                </ul>
+                <p style="margin-top: 15px; font-weight: 700; color: #1e293b;">본 프로젝트는 이러한 한계를 극복하기 위해 사용자의 '세부 지출액'과 카드사별 '실제 약관'을 정합시킨 정량적 혜택 계산 모델을 구축함.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. 주차별 상세 운영 계획</h2>
             <table>
                 <thead>
                     <tr>
@@ -534,7 +548,7 @@
         </section>
 
         <section>
-            <h2>3. 데이터 분석 및 수치 정형화 전략</h2>
+            <h2>4. 데이터 분석 및 수치 정형화 전략</h2>
             <div class="methodology">
                 <div class="method-item">
                     <h4>비정형 데이터의 수치화</h4>
@@ -548,7 +562,7 @@
         </section>
 
         <section>
-            <h2>4. 기대 효과 및 활용 방안</h2>
+            <h2>5. 기대 효과 및 활용 방안</h2>
             <ul style="padding-left: 20px; font-size: 15px;">
                 <li><strong>데이터 분석 역량 증명:</strong> 비즈니스 로직을 알고리즘으로 모델링하고 데이터를 기반으로 분석하는 역량 입증</li>
                 <li><strong>정보 불균형 해소:</strong> 사용자가 인지하지 못한 카드사별 세부 제외 조항까지 반영한 정밀한 정보 제공</li>
@@ -557,7 +571,7 @@
         </section>
 
         <section>
-            <h2>5. 예상 산출물(안) (Live Interactive Prototype)</h2>
+            <h2>6. 예상 산출물(안) (Live Interactive Prototype)</h2>
             <p style="margin-bottom: 20px; color: #64748b; font-size: 15px;">
                 본 프로젝트를 통해 개발될 실제 서비스의 동작 모델입니다. <br>
                 <strong>왼쪽의 슬라이더를 조절하면 오른쪽의 카드 순위와 예상 혜택이 실시간으로 업데이트됩니다.</strong>
@@ -569,7 +583,7 @@
         </section>
 
         <footer>
-            금융 데이터 분석 연구 프로젝트 | 2026
+            금융 데이터 분석 프로젝트 | 2026
         </footer>
     </div>
 
