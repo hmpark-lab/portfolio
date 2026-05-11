@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카드 추천 서비스 개발 운영 계획서</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: #334155;
+            margin: 0;
+            padding: 40px;
+            background-color: #f1f5f9;
+        }
+
+        .report-card {
+            background: white;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+
+        header {
+            border-bottom: 2px solid #0f172a;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .report-tag {
+            display: inline-block;
+            background: #e2e8f0;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #0f172a;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            font-size: 20px;
+            border-left: 4px solid #3b82f6;
+            padding-left: 12px;
+            margin: 40px 0 20px 0;
+            color: #1e293b;
+        }
+
+        .summary-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+
+        .summary-box p {
+            margin: 5px 0;
+            font-size: 15px;
+        }
+
+        .summary-box strong {
+            color: #0f172a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        th {
+            background: #f1f5f9;
+            color: #475569;
+            font-weight: 600;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        .week-col {
+            width: 10%;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .period-col {
+            width: 15%;
+            text-align: center;
+            color: #64748b;
+        }
+
+        .phase-col {
+            width: 15%;
+            font-weight: 500;
+        }
+
+        .task-col {
+            width: 40%;
+        }
+
+        .output-col {
+            width: 20%;
+            color: #0891b2;
+            font-weight: 500;
+        }
+
+        .methodology {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .method-item {
+            background: #eff6ff;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .method-item h4 {
+            margin: 0 0 10px 0;
+            color: #1d4ed8;
+        }
+
+        /* ========================= */
+        /* 시장 분석 포지셔닝 맵 */
+        /* ========================= */
+
+        .pos-map-container {
+            position: relative;
+            width: 100%;
+            height: 420px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: linear-gradient(to top right, #ffffff, #f8fafc);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .axis-label {
+            position: absolute;
+            font-size: 11px;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .axis-y-top {
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .axis-y-bottom {
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .axis-x-left {
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .axis-x-right {
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: right;
+        }
+
+        .map-item {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .map-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 999px;
+        }
+
+        .bg-slate-400 {
+            background: #94a3b8;
+        }
+
+        .bg-slate-500 {
+            background: #64748b;
+        }
+
+        .bg-indigo-600 {
+            background: #4f46e5;
+        }
+
+        .scale-150 {
+            transform: scale(1.5);
+        }
+
+        .animate-pulse {
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .map-label {
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .text-slate-500 {
+            color: #64748b;
+        }
+
+        .text-slate-600 {
+            color: #475569;
+        }
+
+        .text-indigo-700 {
+            color: #4338ca;
+        }
+
+        .text-sm {
+            font-size: 13px;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            text-align: right;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        /* ========================= */
+        /* Live Prototype 전용 스타일 */
+        /* ========================= */
+
+        .demo-container {
+            border: 1px dashed #cbd5e1;
+            border-radius: 12px;
+            background: #fafafa;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .prototype-wrap {
+            padding: 32px;
+            box-sizing: border-box;
+        }
+
+        .prototype-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .control-panel {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 24px;
+        }
+
+        .prototype-title {
+            margin: 0 0 24px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 800;
+            color: #1e293b;
+        }
+
+        .category-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .category-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .category-name-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon-box {
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .icon-orange { background: #ffedd5; color: #ea580c; }
+        .icon-blue { background: #dbeafe; color: #2563eb; }
+        .icon-purple { background: #f3e8ff; color: #9333ea; }
+        .icon-green { background: #dcfce7; color: #16a34a; }
+        .icon-yellow { background: #fef9c3; color: #ca8a04; }
+        .icon-gray { background: #f1f5f9; color: #475569; }
+
+        .category-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .category-value {
+            font-size: 12px;
+            font-weight: 800;
+            color: #4f46e5;
+        }
+
+        .range-input {
+            width: 100%;
+            accent-color: #4f46e5;
+        }
+
+        .total-box {
+            margin-top: 28px;
+            padding-top: 18px;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .total-label {
+            color: #64748b;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .total-value {
+            color: #4338ca;
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        .result-panel {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .result-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card-result {
+            padding: 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            background: #ffffff;
+            transition: 0.2s ease;
+        }
+
+        .card-result.best {
+            border-color: #818cf8;
+            background: #eef2ff;
+        }
+
+        .card-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .card-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .card-name-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .best-badge {
+            background: #4f46e5;
+            color: white;
+            font-size: 8px;
+            font-weight: 900;
+            padding: 2px 6px;
+            border-radius: 999px;
+        }
+
+        .card-name {
+            margin: 0;
+            font-size: 12px;
+            font-weight: 800;
+            color: #334155;
+        }
+
+        .card-provider {
+            margin: 2px 0 0 0;
+            font-size: 10px;
+            color: #94a3b8;
+        }
+
+        .benefit-box {
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .benefit-label {
+            margin: 0;
+            font-size: 9px;
+            color: #94a3b8;
+        }
+
+        .benefit-value {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 900;
+            color: #475569;
+        }
+
+        .best .benefit-value {
+            color: #4f46e5;
+        }
+
+        .notice-box {
+            margin-top: 24px;
+            padding: 16px;
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 14px;
+            color: #92400e;
+            font-size: 11px;
+        }
+
+        .notice-title {
+            margin: 0 0 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 800;
+        }
+
+        .notice-box p {
+            margin: 3px 0;
+        }
+
+        .proto-icon {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .proto-icon-small {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            .report-card {
+                padding: 30px;
+            }
+
+            .methodology,
+            .prototype-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .prototype-wrap {
+                padding: 20px;
+            }
+
+            .pos-map-container {
+                height: 360px;
+            }
+
+            .axis-label {
+                font-size: 10px;
+            }
+
+            .map-label {
+                font-size: 10px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .report-card {
+                box-shadow: none;
+                max-width: 100%;
+                padding: 20px;
+            }
+
+            header {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+    <div class="report-card">
+        <header>
+            <span class="report-tag">운영 계획 보고서</span>
+            <h1>소비 데이터 기반 맞춤형 카드 추천 서비스</h1>
+        </header>
+
+        <section>
+            <h2>1. 시장 분석 및 서비스 타당성</h2>
+            <div class="summary-box">
+                <p>본 프로젝트의 타당성을 확보하기 위해 기존 핀테크 서비스와 '추천 방식' 및 '데이터 정밀도' 측면에서 비교 분석을 실시했습니다.</p>
+            </div>
+
+            <div class="pos-map-container">
+                <div style="position: absolute; width: 1px; height: 90%; background: #e2e8f0; left: 50%; top: 5%;"></div>
+                <div style="position: absolute; height: 1px; width: 90%; background: #e2e8f0; top: 50%; left: 5%;"></div>
+
+                <div class="axis-label axis-y-top">실적/한도 포함 실질 혜택 산출 (High Precision)</div>
+                <div class="axis-label axis-y-bottom">단순 혜택률 표시 (Basic Info)</div>
+                <div class="axis-label axis-x-left">일반적 카테고리 추천</div>
+                <div class="axis-label axis-x-right">개인별 세부 지출액 추천 (Personalized)</div>
+
+                <div class="map-item" style="bottom: 25%; left: 20%;">
+                    <div class="map-dot bg-slate-400"></div>
+                    <span class="map-label text-slate-500">카드고릴라</span>
+                </div>
+                <div class="map-item" style="bottom: 35%; left: 30%;">
+                    <div class="map-dot bg-slate-500"></div>
+                    <span class="map-label text-slate-600">토스 / 뱅크샐러드</span>
+                </div>
+                <div class="map-item" style="bottom: 40%; left: 40%;">
+                    <div class="map-dot bg-slate-500"></div>
+                    <span class="map-label text-slate-600">핀크 / 페이코</span>
+                </div>
+
+                <div class="map-item" style="top: 15%; right: 15%;">
+                    <div class="map-dot bg-indigo-600 scale-150 animate-pulse"></div>
+                    <span class="map-label text-indigo-700 text-sm">Smart Recommender (본 서비스)</span>
+                    <span style="font-size: 10px; color: #4f46e5; font-weight: 600;">Blue Ocean 독점 점유</span>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>비교 지표</th>
+                        <th style="width: 25%;">기존 핀테크 앱 (Toss 등)</th>
+                        <th style="width: 25%;">금융 플랫폼 (카드고릴라 등)</th>
+                        <th style="background: #eef2ff; color: #4f46e5;">본 프로젝트 (Smart Recommender)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="center"><strong>추천 로직</strong></td>
+                        <td>과거 소비 카테고리 매칭</td>
+                        <td>카드사 혜택 DB 랭킹순</td>
+                        <td style="background: #f8fafc;"><strong>개인별 예상 지출 시뮬레이션</strong></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><strong>실적 조건 반영</strong></td>
+                        <td>단순 실적 구간 안내 (텍스트)</td>
+                        <td>약관 명시 수준</td>
+                        <td style="background: #f8fafc;"><strong>실시간 실적구간 자동 매칭 연산</strong></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><strong>할인 한도 계산</strong></td>
+                        <td>반영 불가 (단순 할인율 표시)</td>
+                        <td>미반영 (정성적 정보 제공)</td>
+                        <td style="background: #f8fafc;"><strong>통합 할인 한도 기반 최종 혜택 산출</strong></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><strong>데이터 신뢰도</strong></td>
+                        <td>실제 수령액과 오차 발생 가능</td>
+                        <td>일반적인 혜택 정보 위주</td>
+                        <td style="background: #f8fafc;"><strong>실질 피킹률(Real Picking Rate) 도출</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>2. 프로젝트 개요</h2>
+            <div class="summary-box">
+                <p><strong>수행 기간:</strong> 2026. 05. 11 ~ 2026. 06. 18 (약 5.5주)</p>
+                <p><strong>분석 대상:</strong> 주요 카드 3사 (신한카드, KB국민카드, 우리카드) 주력 상품군</p>
+                <p><strong>핵심 과제:</strong> 비정형 혜택 정보의 수치 정형화 및 전월 실적 연동형 혜택 계산 알고리즘 구현</p>
+                <p><strong>개발 목적:</strong> 금융 소비자 정보 비대칭성 해소 및 데이터 기반의 합리적 소비 의사결정 지원</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. 배경 및 기존 서비스의 한계</h2>
+            <div class="summary-box">
+                <p><strong>현황:</strong> 기존 핀테크 앱의 카드 추천 서비스는 사용자의 주 지출 카테고리(예: 쇼핑)를 파악하여 해당 카테고리 혜택이 높은 카드를 우선적으로 추천함.</p>
+                <p><strong>한계점:</strong></p>
+                <ul style="font-size: 15px; padding-left: 20px; margin-top: 10px;">
+                    <li style="margin-bottom: 8px;"><strong>복합 지출 구조 미반영:</strong> 특정 카테고리 외의 전체적인 지출 규모를 고려하지 않아 실제 피킹률 파악이 어려움.</li>
+                    <li style="margin-bottom: 8px;"><strong>실적 조건의 간과:</strong> 카드사별 상이한 전월 실적 달성 여부를 시뮬레이션하지 않아 조건 미달 시 혜택이 0원이 되는 리스크를 노출함.</li>
+                    <li style="margin-bottom: 8px;"><strong>할인 한도의 부재:</strong> 카테고리별 할인율만 강조하고 '통합 할인 한도'를 고려하지 않아, 실질적으로 체감하는 혜택 총액 산출이 불가능함.</li>
+                </ul>
+                <p style="margin-top: 15px; font-weight: 700; color: #1e293b;">본 프로젝트는 이러한 한계를 극복하기 위해 사용자의 '세부 지출액'과 카드사별 '실제 약관'을 정합시킨 정량적 혜택 계산 모델을 구축함.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>4. 주차별 상세 운영 계획</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="week-col">주차</th>
+                        <th class="period-col">기간</th>
+                        <th class="phase-col">단계</th>
+                        <th class="task-col">주요 과업 (Detailed Tasks)</th>
+                        <th class="output-col">산출물</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="week-col">1주차</td>
+                        <td class="period-col">05.11~05.17</td>
+                        <td class="phase-col">데이터 수집</td>
+                        <td class="task-col">
+                            • 카드 3사(신한, 국민, 우리) 공식 홈페이지 혜택 데이터 크롤링<br>
+                            • 상품별 약관(PDF/이미지) 텍스트 데이터 추출 및 분류<br>
+                            • 서비스 기능 명세 및 요구사항 정의서 작성
+                        </td>
+                        <td class="output-col">RAW 데이터셋,<br>요구사항 정의서</td>
+                    </tr>
+                    <tr>
+                        <td class="week-col">2주차</td>
+                        <td class="period-col">05.18~05.24</td>
+                        <td class="phase-col">데이터 정형화</td>
+                        <td class="task-col">
+                            • <strong>[핵심]</strong> 비정형 혜택 문구의 변수화 (할인율, 할인 한도, 실적 구간)<br>
+                            • 전월 실적 제외 항목(공과금, 상품권 등) 예외 로직 설계<br>
+                            • 통합 할인 한도 산출을 위한 DB 스키마 모델링
+                        </td>
+                        <td class="output-col">정형 데이터셋,<br>DB 설계서</td>
+                    </tr>
+                    <tr>
+                        <td class="week-col">3주차</td>
+                        <td class="period-col">05.25~05.31</td>
+                        <td class="phase-col">분석 및 구현</td>
+                        <td class="task-col">
+                            • 소비 카테고리별 실질 혜택 금액 계산 알고리즘 개발<br>
+                            • 시각화 툴을 활용한 카드별 피킹률(효율성) 비교 분석<br>
+                            • 추천 로직 엔진(Matching Engine) 프로토타입 개발
+                        </td>
+                        <td class="output-col">알고리즘 기능,<br>분석 리포트</td>
+                    </tr>
+                    <tr>
+                        <td class="week-col">4주차</td>
+                        <td class="period-col">06.01~06.07</td>
+                        <td class="phase-col">UI/UX 개발</td>
+                        <td class="task-col">
+                            • React 기반 사용자 소비 금액 입력 인터페이스(슬라이더 등) 구현<br>
+                            • 결과 대시보드 시각화 (카드별 혜택 비중, 피킹률 지표 표시)<br>
+                            • 모바일 대응 반응형 레이아웃 작업
+                        </td>
+                        <td class="output-col">웹 프로토타입,<br>소스코드</td>
+                    </tr>
+                    <tr>
+                        <td class="week-col">5주차+</td>
+                        <td class="period-col">06.08~06.18</td>
+                        <td class="phase-col">테스트/배포</td>
+                        <td class="task-col">
+                            • 실제 사용자 지출 시나리오 기반 데이터 정합성 테스트<br>
+                            • 서비스 배포(Cloud 환경) 및 최종 버그 수정<br>
+                            • 성과 분석 및 운영 결과 보고서 최종본 작성
+                        </td>
+                        <td class="output-col">서비스 URL,<br>최종 보고서</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>5. 데이터 분석 및 수치 정형화 전략</h2>
+            <div class="methodology">
+                <div class="method-item">
+                    <h4>비정형 데이터의 수치화</h4>
+                    <p>"스타벅스 20% 할인(월 최대 1만원)" → <code>{ brand: 'Starbucks', rate: 0.2, limit: 10000 }</code> 와 같이 속성별로 분리하여 계산 가능한 형태로 가공합니다.</p>
+                </div>
+                <div class="method-item">
+                    <h4>피킹률(Picking Rate) 분석</h4>
+                    <p>사용자의 총 지출액 대비 실제 할인/적립되는 금액의 비율을 계산하여, 단순 혜택액이 아닌 '소비 효율성'을 객관적 지표로 제시합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>6. 기대 효과 및 활용 방안</h2>
+            <ul style="padding-left: 20px; font-size: 15px;">
+                <li><strong>데이터 분석 역량 증명:</strong> 비즈니스 로직을 알고리즘으로 모델링하고 데이터를 기반으로 분석하는 역량 입증</li>
+                <li><strong>정보 불균형 해소:</strong> 사용자가 인지하지 못한 카드사별 세부 제외 조항까지 반영한 정밀한 정보 제공</li>
+                <li><strong>플랫폼 확장성:</strong> 추후 카드사 API 연동을 통해 실시간 업데이트 서비스로 고도화 가능</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>7. 기대 산출물(안) (Live Interactive Prototype)</h2>
+            <p style="margin-bottom: 20px; color: #64748b; font-size: 15px;">
+                본 프로젝트를 통해 개발될 실제 서비스의 동작 모델입니다. <br>
+                <strong>왼쪽의 슬라이더를 조절하면 오른쪽의 카드 순위와 예상 혜택이 실시간으로 업데이트됩니다.</strong>
+            </p>
+
+            <div id="root" class="demo-container">
+                <div style="padding: 100px; text-align: center; color: #94a3b8;">라이브 프로토타입 로딩 중...</div>
+            </div>
+        </section>
+
+        <footer>
+            금융 데이터 분석 프로젝트 | 2026
+        </footer>
+    </div>
+
+    <script type="text/babel">
+        const { useState, useMemo } = React;
+
+        const Icon = ({ name, className }) => {
+            const icons = {
+                utensils: <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />,
+                bus: <path d="M19 17h2v2h-2zm-16 0h2v2H3zm19-9v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a5 5 0 0 1 5-5h10a5 5 0 0 1 5 5ZM8 19v2m8-2v2M2 13h20" />,
+                shopping: <path d="m15 10 4.553-2.276A1 1 0 0 1 21 8.618V17a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8.618a1 1 0 0 1 1.447-.894L9 10M6 10h12M9 10V6a3 3 0 0 1 6 0v4" />,
+                smartphone: (
+                    <React.Fragment>
+                        <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+                        <path d="M12 18h.01" />
+                    </React.Fragment>
+                ),
+                zap: <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />,
+                wallet: <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4M3 5v14a2 2 0 0 0 2 2h16v-5M18 12a2 2 0 0 0 0 4h4v-4Z" />,
+                trending: (
+                    <React.Fragment>
+                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                        <polyline points="17 6 23 6 23 12" />
+                    </React.Fragment>
+                )
+            };
+
+            return (
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={className}
+                >
+                    {icons[name]}
+                </svg>
+            );
+        };
+
+        const CARDS_DATA = [
+            {
+                id: 'samsung-id-on',
+                name: '삼성 iD ON 카드',
+                provider: '삼성카드',
+                minPerformance: 300000,
+                annualFee: 20000,
+                benefits: [
+                    { category: 'dining', rate: 0.1, limit: 10000 },
+                    { category: 'transport', rate: 0.1, limit: 20000 }
+                ],
+                totalLimitByPerformance: { 300000: 31500, 600000: 50000 }
+            },
+            {
+                id: 'shinhan-mrlife',
+                name: '신한카드 Mr.Life',
+                provider: '신한카드',
+                minPerformance: 300000,
+                annualFee: 15000,
+                benefits: [
+                    { category: 'utilities', rate: 0.1, limit: 10000 },
+                    { category: 'transport', rate: 0.1, limit: 10000 },
+                    { category: 'shopping', rate: 0.1, limit: 10000 }
+                ],
+                totalLimitByPerformance: { 300000: 30000, 500000: 40000 }
+            },
+            {
+                id: 'hyundai-naver',
+                name: '네이버 현대카드',
+                provider: '현대카드',
+                minPerformance: 300000,
+                annualFee: 10000,
+                benefits: [
+                    { category: 'shopping', rate: 0.05, limit: 20000 }
+                ],
+                totalLimitByPerformance: { 300000: 200000 }
+            },
+            {
+                id: 'k-pass',
+                name: 'K-패스 신용카드',
+                provider: '카드사 공통',
+                minPerformance: 300000,
+                annualFee: 12000,
+                benefits: [
+                    { category: 'transport', rate: 0.1, limit: 10000 }
+                ],
+                totalLimitByPerformance: { 300000: 15000 }
+            }
+        ];
+
+        const CATEGORIES = [
+            { id: 'dining', name: '음식점/카페', icon: 'utensils', colorClass: 'icon-orange' },
+            { id: 'transport', name: '교통/택시', icon: 'bus', colorClass: 'icon-blue' },
+            { id: 'shopping', name: '온라인/마트 쇼핑', icon: 'shopping', colorClass: 'icon-purple' },
+            { id: 'telecom', name: '통신/스트리밍', icon: 'smartphone', colorClass: 'icon-green' },
+            { id: 'utilities', name: '공과금/보험료', icon: 'zap', colorClass: 'icon-yellow' },
+            { id: 'general', name: '기타 일반 소비', icon: 'wallet', colorClass: 'icon-gray' }
+        ];
+
+        function App() {
+            const [spending, setSpending] = useState({
+                dining: 300000,
+                transport: 200000,
+                shopping: 200000,
+                telecom: 50000,
+                utilities: 100000,
+                general: 150000
+            });
+
+            const totalSpending = Object.values(spending).reduce((a, b) => a + b, 0);
+
+            const results = useMemo(() => {
+                return CARDS_DATA.map(card => {
+                    let totalBenefit = 0;
+
+                    if (totalSpending >= card.minPerformance) {
+                        const tiers = Object.keys(card.totalLimitByPerformance)
+                            .map(Number)
+                            .sort((a, b) => b - a);
+
+                        const activeTier = tiers.find(t => totalSpending >= t) || card.minPerformance;
+                        const maxLimit = card.totalLimitByPerformance[activeTier];
+
+                        let calculatedBenefit = 0;
+                        card.benefits.forEach(benefit => {
+                            calculatedBenefit += Math.min(
+                                (spending[benefit.category] || 0) * benefit.rate,
+                                benefit.limit
+                            );
+                        });
+
+                        totalBenefit = Math.min(calculatedBenefit, maxLimit);
+                    }
+
+                    return { ...card, totalBenefit };
+                }).sort((a, b) => b.totalBenefit - a.totalBenefit);
+            }, [spending, totalSpending]);
+
+            const format = (value) => new Intl.NumberFormat('ko-KR').format(value) + '원';
+
+            return (
+                <div className="prototype-wrap">
+                    <div className="prototype-grid">
+                        <div className="control-panel">
+                            <h3 className="prototype-title">
+                                <Icon name="wallet" className="proto-icon" />
+                                월 소비 지출 설정
+                            </h3>
+
+                            <div className="category-list">
+                                {CATEGORIES.map(category => (
+                                    <div key={category.id}>
+                                        <div className="category-head">
+                                            <div className="category-name-wrap">
+                                                <div className={`icon-box ${category.colorClass}`}>
+                                                    <Icon name={category.icon} className="proto-icon-small" />
+                                                </div>
+                                                <span className="category-name">{category.name}</span>
+                                            </div>
+                                            <span className="category-value">{format(spending[category.id])}</span>
+                                        </div>
+
+                                        <input
+                                            type="range"
+                                            min="0"
+                                            max="1000000"
+                                            step="10000"
+                                            value={spending[category.id]}
+                                            onChange={(event) => {
+                                                setSpending({
+                                                    ...spending,
+                                                    [category.id]: parseInt(event.target.value)
+                                                });
+                                            }}
+                                            className="range-input"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="total-box">
+                                <span className="total-label">총 지출</span>
+                                <span className="total-value">{format(totalSpending)}</span>
+                            </div>
+                        </div>
+
+                        <div className="result-panel">
+                            <h3 className="prototype-title">
+                                <Icon name="trending" className="proto-icon" />
+                                실시간 추천 랭킹
+                            </h3>
+
+                            <div className="result-list">
+                                {results.map((card, index) => (
+                                    <div
+                                        key={card.id}
+                                        className={index === 0 ? 'card-result best' : 'card-result'}
+                                    >
+                                        <div className="card-row">
+                                            <div className="card-left">
+                                                <div className="card-icon">💳</div>
+                                                <div>
+                                                    <div className="card-name-row">
+                                                        {index === 0 && <span className="best-badge">BEST</span>}
+                                                        <h4 className="card-name">{card.name}</h4>
+                                                    </div>
+                                                    <p className="card-provider">{card.provider}</p>
+                                                </div>
+                                            </div>
+
+                                            <div className="benefit-box">
+                                                <p className="benefit-label">예상 혜택</p>
+                                                <p className="benefit-value">+{format(card.totalBenefit)}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="notice-box">
+                                <p className="notice-title">
+                                    <Icon name="zap" className="proto-icon-small" />
+                                    시뮬레이션 안내
+                                </p>
+                                <p>• 위 결과는 입력된 소비액이 전월 실적과 동일하다고 가정한 계산 결과입니다.</p>
+                                <p>• 카드사별 통합 한도와 제외 업종에 따라 실제와 차이가 있을 수 있습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
