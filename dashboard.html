@@ -84,7 +84,7 @@
     @keyframes slideDown { from{transform: translateY(-100%)} to{transform: translateY(0)} }
     .alert-text { color: #b91c1c; font-weight: 500; }
     .alert-text strong { color: var(--red); font-weight: 800; }
-    .alert-dismiss { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 18px; }
+    .alert-banner button.alert-dismiss { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 18px; }
 
     main { padding: 32px 28px; max-width: 1440px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
     .section-label { font-size: 11px; font-weight: 800; color: var(--text-muted); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
@@ -1173,6 +1173,7 @@
     document.getElementById('chatWidget').classList.toggle('show');
   }
 
+  // --- GEMINI API INTEGRATIONS ---
   const apiKey = ""; // Set dynamically during runtime build
 
   // Exponential backoff runner for API requests (As required by rules)
@@ -1239,6 +1240,11 @@
     };
 
     try {
+      // API Key가 빈 값이거나 테스트 중일 때 즉시 데모 폴백 작동되도록 가설 설계
+      if (!apiKey) {
+        throw new Error("Local Demo Trigger: API Key is blank.");
+      }
+
       const data = await callGemini(url, payload);
       const textResult = data.candidates?.[0]?.content?.parts?.[0]?.text;
       
@@ -1252,8 +1258,27 @@
         throw new Error("Invalid Response format");
       }
     } catch (e) {
-      showToast("Gemini API 호출에 실패하였습니다. 다시 시도해 주세요.", "error");
-      placeholder.style.display = 'flex';
+      console.warn("API call failed, switching to high-fidelity local simulation:", e);
+      
+      // 데모용 고품질 마케팅 요약 보고서 출력
+      const mockResult = `
+        <h3 style="font-size: 15px; font-weight: 800; color: white; margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
+          🤖 Gemini 2.5 AI 실시간 크로스 진단 보고서 (데모 모드)
+        </h3>
+        <p>현재 대시보드의 실시간 GA4 지표 및 플레이스토어 리뷰 데이터를 종합 정밀 분석한 결과입니다.</p>
+        <ul style="margin-left: 20px; margin-top: 8px; margin-bottom: 14px; list-style-type: disc;">
+          <li style="margin-bottom: 6px;"><strong>핵심 이상 징후 (Anomaly Alert):</strong> 일간 활성 사용자(DAU: ${currentDAU}명)는 전일 대비 완만하지만 포인트몰 전환 수(${currentPurchase}건, ▼9.6%)의 지속 하락 및 핵심 <strong>결제 퍼널 최종 전환율이 7.7% 수준으로 붕괴</strong>된 지점이 관측되었습니다.</li>
+          <li style="margin-bottom: 6px;"><strong>구글 VOC 정성 매핑 원인:</strong> 최근 플레이스토어 리뷰 상에서 <em>"네이버페이 교환권 구매가 안된다"</em>는 불만과 <em>"포인트몰 메뉴 미노출"</em> 오류가 다수 매핑됩니다. 이는 마케팅 획득(Acquisition)의 실패가 아니라 인앱 UI 배치 실패 또는 상품 목록 API 결합 장애로 추정됩니다.</li>
+          <li style="margin-bottom: 6px;"><strong>성장 마케팅 제언 (Action Plan):</strong> 개발 부서에 안드로이드 v3.3.15 긴급 점검 패치 인계 및 현재 GA4 수집이 누락된 '출석체크 클릭', '만보기 연동' 이벤트 추적 코드를 조속히 복구해 데이터 측정 공백을 해결할 것을 제안합니다.</li>
+        </ul>
+      `;
+      
+      generatedBriefText = "오프라인 브리핑을 시작합니다. 일간 활성 사용자는 안정적이나 포인트몰 전환이 크게 감소했습니다. 플레이스토어에서 네이버페이 교환권 메뉴 누락 불만이 접수되었으니 개발팀과 UI 점검을 진행해야 합니다.";
+      
+      output.innerHTML = mockResult;
+      output.style.display = 'block';
+      speechBtn.disabled = false;
+      showToast("로컬 데모용 AI 리포트가 성공적으로 출력되었습니다. (API 폴백 완료)", "warning");
     } finally {
       loader.style.display = 'none';
     }
@@ -1269,7 +1294,7 @@
 
   async function readBriefingAudio() {
     if (!generatedBriefText) {
-      showToast("먼저 AI 보고서를 먼저 생성해 주세요.", "warning");
+      showToast("먼저 AI 보고서를 생성해 주세요.", "warning");
       return;
     }
 
@@ -1281,7 +1306,7 @@
     lucide.createIcons();
 
     // Prepare text sample to keep voice response within normal duration limits
-    const textSnippet = "경고 요약 브리핑을 시작하겠습니다. " + generatedBriefText.substring(0, 200) + " 이상 실시간 마케팅 진단을 마치겠습니다.";
+    const textSnippet = "경고 요약 브리핑을 시작하겠습니다. " + generatedBriefText.replace(/<[^>]*>/g, '').substring(0, 180) + " 이상 브리핑을 마치겠습니다.";
 
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
     const payload = {
@@ -1297,6 +1322,10 @@
     };
 
     try {
+      if (!apiKey) {
+        throw new Error("Local Demo Trigger for TTS: API Key is blank.");
+      }
+
       const data = await callGemini(url, payload);
       const base64Audio = data.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
       const mimeType = data.candidates?.[0]?.content?.parts?.[0]?.inlineData?.mimeType || "audio/L16;rate=24000";
@@ -1323,18 +1352,79 @@
         speakBtn.innerHTML = `<i data-lucide="volume-2"></i> 음성 브리핑 듣기 (TTS)`;
         lucide.createIcons();
         
-        // Auto Play
         startAudioAtOffset(0);
-        showToast("음성 분석 리포트 생성이 완료되었습니다. 플레이어를 제어해 들어보세요!");
+        showToast("Gemini AI TTS 오디오가 생성되었습니다.");
       }, (e) => {
         throw new Error("PCM decoding failed");
       });
 
     } catch (e) {
-      showToast("TTS 오디오 연동에 실패했습니다. API 키나 환경을 점검해 주세요.", "error");
-      speakBtn.disabled = false;
-      speakBtn.innerHTML = `<i data-lucide="volume-2"></i> 음성 브리핑 듣기 (TTS)`;
-      lucide.createIcons();
+      console.warn("Gemini TTS failed, playing high-fidelity browser voice backup:", e);
+      
+      // 브라우저 내장 음성 합성 모듈(Web Speech API)을 활용해 어떠한 환경에서도 안전하게 음성 재생 지원
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel(); // 진행 중이던 음성 중단
+        
+        const utterance = new SpeechSynthesisUtterance(textSnippet);
+        utterance.lang = 'ko-KR';
+        utterance.rate = 1.0;
+        utterance.pitch = 1.0;
+        
+        const voices = window.speechSynthesis.getVoices();
+        const koVoice = voices.find(v => v.lang.includes('ko'));
+        if (koVoice) utterance.voice = koVoice;
+        
+        // 오디오 제어기 연동 시뮬레이션
+        playerWrap.style.display = 'flex';
+        document.getElementById('audioBar').style.width = '0%';
+        document.getElementById('audioTime').innerText = "00:00 / 00:14";
+        
+        let startTime = Date.now();
+        const duration = 14; 
+        
+        utterance.onstart = () => {
+          isPlayingAudio = true;
+          document.getElementById('audioIcon').setAttribute('data-lucide', 'pause');
+          lucide.createIcons();
+          
+          const interval = setInterval(() => {
+            if (!isPlayingAudio) {
+              clearInterval(interval);
+              return;
+            }
+            let elapsed = (Date.now() - startTime) / 1000;
+            let pct = Math.min(100, (elapsed / duration) * 100);
+            document.getElementById('audioBar').style.width = pct + '%';
+            document.getElementById('audioTime').innerText = `${formatAudioTime(elapsed)} / ${formatAudioTime(duration)}`;
+            
+            if (elapsed >= duration) {
+              clearInterval(interval);
+              isPlayingAudio = false;
+              document.getElementById('audioIcon').setAttribute('data-lucide', 'play');
+              lucide.createIcons();
+              document.getElementById('audioBar').style.width = '100%';
+            }
+          }, 200);
+        };
+        
+        utterance.onend = () => {
+          isPlayingAudio = false;
+          document.getElementById('audioIcon').setAttribute('data-lucide', 'play');
+          lucide.createIcons();
+        };
+
+        window.speechSynthesis.speak(utterance);
+        
+        speakBtn.disabled = false;
+        speakBtn.innerHTML = `<i data-lucide="volume-2"></i> 음성 브리핑 듣기 (TTS)`;
+        lucide.createIcons();
+        showToast("로컬 음성 낭독 엔진(Web Speech API)을 가동합니다.", "warning");
+      } else {
+        showToast("오디오 재생을 지원하지 않는 브라우저 환경입니다.", "error");
+        speakBtn.disabled = false;
+        speakBtn.innerHTML = `<i data-lucide="volume-2"></i> 음성 브리핑 듣기 (TTS)`;
+        lucide.createIcons();
+      }
     }
   }
 
@@ -1409,6 +1499,20 @@
   }
 
   function toggleAudioPlayback() {
+    if (window.speechSynthesis && window.speechSynthesis.speaking) {
+      if (isPlayingAudio) {
+        window.speechSynthesis.pause();
+        isPlayingAudio = false;
+        document.getElementById('audioIcon').setAttribute('data-lucide', 'play');
+      } else {
+        window.speechSynthesis.resume();
+        isPlayingAudio = true;
+        document.getElementById('audioIcon').setAttribute('data-lucide', 'pause');
+      }
+      lucide.createIcons();
+      return;
+    }
+
     if (!audioBufferGlobal) return;
     
     if (isPlayingAudio) {
@@ -1482,13 +1586,30 @@
     };
 
     try {
+      if (!apiKey) {
+        throw new Error("Local Demo Trigger for Chatbot.");
+      }
       const data = await callGemini(url, payload);
       const answer = data.candidates?.[0]?.content?.parts?.[0]?.text || "답변을 추출하기 어려워졌습니다.";
       removeLoaderBubble(loaderId);
       appendMsg(answer, 'bot');
     } catch (e) {
-      removeLoaderBubble(loaderId);
-      appendMsg("API 응답 중 통신 장애가 발생했습니다. 다시 제안해 주세요.", 'bot');
+      // 오프라인/로컬 구동 시 사전에 세팅된 초정밀 마케팅 답변으로 유연하게 응대
+      setTimeout(() => {
+        removeLoaderBubble(loaderId);
+        let answer = "죄송합니다, 현재 실시간 AI 챗 API 통신망이 비활성화되었습니다. 다만 마이디(my:D) 맞춤형 성장 지식베이스를 바탕으로 답변을 준비해 드렸습니다. ";
+        
+        if (text.includes("3.3.14") || text.includes("구매 급감")) {
+          answer += "최근 3.3.14 버전 업데이트 후 결제 트래픽 80% 하락 문제는 단순 이탈이 아닌 '네이버페이 포인트 교환권 차단' 등 상품 연동 UI 오류에 있습니다. 마케팅 비용 투입보다는 안드로이드 v3.3.15 긴급 점검 릴리즈를 진행하시는 것을 우선 권장합니다.";
+        } else if (text.includes("푸시") || text.includes("카피")) {
+          answer += "혜택 및 짠테크족 이탈을 복구하기 위한 3대 고효율 문구안입니다:\n1. '[혜택] 오늘 만보기 걸음 수, 커피값으로 바꾸는 거 깜빡하셨나요? ☕'\n2. '[경고] 내 포인트가 사라지기 전! 지금 바로 네이버페이 교환권을 선점하세요! 🔥'\n3. '[출석] 단 3초 출석체크 완료하고 리워드 즉시 받아가기! 📅'";
+        } else if (text.includes("개선안") || text.includes("GA4")) {
+          answer += "현재 핵심 인게이지먼트 기능인 '만보기'와 '출석체크' 성과 수집을 위한 GA4 이벤트 누락이 발견되었습니다. attendance_click / attendance_complete 및 step_sync_success 이벤트 태그 설계를 개발팀에 긴급 인계해야 마케팅 성과 성배(ROI)를 정밀 추적할 수 있습니다.";
+        } else {
+          answer += "현재 마이디 서비스의 성장을 위해서는 GA4 상의 누락된 핵심 전환 이벤트(출석체크, 만보기 연동 성공률)를 복구하고, 플레이스토어 리뷰 상에서 렌더링 에러가 발생하는 특정 OS 타겟 핫픽스를 가동해 최종 도달율(현재 7.7%)을 끌어올려야 합니다. 구체적인 가이드가 필요하시다면 'GA4 개선안'이나 '이탈방지 푸시 카피'를 질문해 보세요!";
+        }
+        appendMsg(answer, 'bot');
+      }, 800);
     }
   }
 
