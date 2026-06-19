@@ -84,7 +84,7 @@
     @keyframes slideDown { from{transform: translateY(-100%)} to{transform: translateY(0)} }
     .alert-text { color: #b91c1c; font-weight: 500; }
     .alert-text strong { color: var(--red); font-weight: 800; }
-    .alert-banner button.alert-dismiss { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 18px; }
+    .alert-dismiss { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 18px; }
 
     main { padding: 32px 28px; max-width: 1440px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
     .section-label { font-size: 11px; font-weight: 800; color: var(--text-muted); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
@@ -572,11 +572,11 @@
   </div>
 
   <!-- CHARTS DIVISION -->
-  <section class="charts-grid">
-    <!-- Trend Chart (Flex-grow 및 Height 유기적 동적 팽창 정합 보완) -->
+  <section class="charts-grid font-sans">
+    <!-- Trend Chart (안정적인 상위 카드 제약과 Chart.js 리사이즈 무한 증식 루프 전면 차단 정합 완벽 보완) -->
     <div class="chart-card" style="min-height: 410px; display: flex; flex-direction: column; justify-content: space-between;">
-      <div style="display: flex; flex-direction: column; height: calc(100% - 30px); width: 100%;">
-        <div class="chart-header" style="margin-bottom: 12px; flex-shrink: 0;">
+      <div style="display: flex; flex-direction: column; width: 100%;">
+        <div class="chart-header" style="margin-bottom: 20px; flex-shrink: 0;">
           <div>
             <h4 class="chart-title"><i data-lucide="line-chart" class="w-4 h-4 text-indigo-500"></i> 사용자 활성화 트렌드 (GA4 실데이터)</h4>
             <p class="chart-sub">2026.04.01 ~ 06.11 · 일별 추이 및 세그먼트 분석</p>
@@ -586,9 +586,9 @@
             <button class="tab" onclick="switchTab('mau',this)">월간(MAU)</button>
           </div>
         </div>
-        <!-- 캔버스 영역이 빈 여백 없이 유동적으로 늘어나도록 flex-grow 지정 -->
-        <div class="relative w-full" style="flex-grow: 1; min-height: 230px; height: 100%;">
-          <canvas id="trendChart" style="width: 100% !important; height: 100% !important;"></canvas>
+        <!-- 캔버스 영역의 높이를 240px로 고정하여 responsive 탭 스위칭 시 위아래 무한 리사이즈 팽창 루프를 기술적으로 영구 차단 -->
+        <div class="relative w-full" style="height: 240px; overflow: hidden; flex-shrink: 0;">
+          <canvas id="trendChart"></canvas>
         </div>
       </div>
       <div class="legend-row" style="margin-top: 10px; padding-top: 14px; border-top: 1px solid var(--border); flex-shrink: 0;">
@@ -1035,13 +1035,13 @@
   function showToast(message, type = "success") {
     const container = document.getElementById('toastContainer');
     const toast = document.createElement('div');
-    toast.className = `toast bg-slate-900 border border-slate-800 text-white shadow-lg`;
+    toast.className = `toast bg-slate-900 border border-slate-800 text-white`;
     
     let icon = "check";
     if (type === "warning") icon = "alert-triangle";
     if (type === "error") icon = "x-circle";
     
-    toast.innerHTML = `<i data-lucide="${icon}" class="w-4 h-4 text-indigo-400 animate-bounce"></i><span>${message}</span>`;
+    toast.innerHTML = `<i data-lucide="${icon}" class="w-4 h-4 text-indigo-400"></i><span>${message}</span>`;
     container.appendChild(toast);
     lucide.createIcons();
 
@@ -1222,7 +1222,7 @@
       - 포인트몰 기프티콘 구매수: ${currentPurchase}건 (전월 대비 9.6% 감소, 특히 3.3.14 버전 업데이트 후 checkout 급락 및 이탈 극대화)
       
       구글 플레이스토어 주요 VOC 텍스트:
-      1. "네이버페이 교환권 구매가 안되네요. 홈 화면에 없어졌어요" (별점 3점)
+      1. "네이버페이 교환권 구매가 안되네요. 홈 화면에서 없어졌어요" (별점 3점)
       2. "포인트몰이 안 보여요. 사람마다 화면 레이아웃이 다른 이유가 뭔가요?" (별점 2점)
       3. "출석체크 기능이 안 들여보내져요" (과거 버전 3.3.12 핵심 이슈)
       
