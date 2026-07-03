@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Assistant Intern Portfolio | Nota AI 지원</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800&display=swap');
+        :root {
+            --nota-blue: #2563EB;
+            --nota-deep: #0F172A;
+            --nota-sky: #EFF6FF;
+            --nota-line: #DBEAFE;
+            --nota-text: #1E293B;
+        }
+        body { 
+            font-family: 'Noto Sans KR', sans-serif; 
+            scroll-behavior: smooth;
+            background-color: #ffffff;
+            color: var(--nota-text);
+        }
+        .bg-nota-blue { background-color: var(--nota-blue); }
+        .text-nota-blue { color: var(--nota-blue); }
+        .bg-nota-deep { background-color: var(--nota-deep); }
+        .text-nota-deep { color: var(--nota-deep); }
+        .section-padding { padding: 80px 0; }
+        .project-card {
+            transition: all 0.35s ease;
+            border: 1px solid #e5e7eb;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 40px -18px rgba(37, 99, 235, 0.25);
+            border-color: var(--nota-blue);
+        }
+        .skill-tag {
+            background-color: #F8FAFC;
+            color: #334155;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 1px solid #E2E8F0;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #0F172A, #2563EB);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: var(--nota-blue);
+            border: 4px solid #fff;
+            box-shadow: 0 0 0 1px var(--nota-blue);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-100">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3 shrink-0">
+                <img
+                    src="https://opening-attachments.greetinghr.com/20230627/459b379e-e0a4-4b51-8984-3bac979b9f3e/NotaAI_logo_small.png"
+                    alt="Nota AI Logo"
+                    class="h-10 w-auto object-contain"
+                >
+                <span class="hidden sm:inline-block h-6 w-px bg-slate-200"></span>
+                <span class="hidden sm:inline-block font-bold text-sm tracking-[0.16em] text-slate-500 uppercase">Research Portfolio</span>
+            </div>
+            <div class="hidden md:flex ml-auto space-x-8 text-sm font-medium text-slate-600">
+                <a href="#home" class="hover:text-nota-blue transition">Home</a>
+                <a href="#about" class="hover:text-nota-blue transition">About</a>
+                <a href="#skills" class="hover:text-nota-blue transition">Skills</a>
+                <a href="#projects" class="hover:text-nota-blue transition">Projects</a>
+                <a href="#contact" class="hover:text-nota-blue transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 lg:pt-44 lg:pb-32 bg-gradient-to-br from-blue-50 via-white to-slate-50">
+    <div class="container mx-auto px-6">
+        <div class="max-w-5xl">
+            <h2 class="text-sm font-bold text-nota-blue tracking-[0.2em] mb-5 uppercase">
+                Nota AI-Industry Research Assistant
+            </h2>
+
+            <h1 class="font-bold leading-tight mb-8">
+                <span class="block text-6xl lg:text-8xl gradient-text tracking-tight">
+                    RE:SEARCH
+                </span>
+                <span class="block mt-5 text-4xl lg:text-6xl text-slate-900">
+                    다시 질문하고, 더 나은 답을 찾다
+                    
+                </span>
+            </h1>
+
+            <p class="text-xl text-slate-600 mb-10 leading-relaxed max-w-3xl">
+                산업·정책 리서치, 서비스 데이터 분석, 연구 경험을 바탕으로 익숙한 문제를 다시 바라보고,
+                고객의 요구 속에서 AX 솔루션의 제품화와 사업화에 필요한 답을 찾아가겠습니다.
+            </p>
+
+            <div class="flex flex-wrap gap-4">
+                <a href="#projects" class="bg-nota-blue text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-100">
+                    주요 프로젝트 보기
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- About & Education Section -->
+    <section id="about" class="section-padding bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+                <div>
+                    <h3 class="text-3xl font-bold mb-8">Professional Summary</h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        Nota AI-Industry팀의 Research Assistant Intern은 단순 자료 조사보다, <b>산업 문제를 이해하고 시장·고객·제품 관점으로 구조화하여 실행 가능한 의사결정 자료로 바꾸는 역할</b>이라고 생각합니다.
+                    </p>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="flex items-center p-5 bg-blue-50/50 rounded-xl border border-blue-100">
+                            <i class="fas fa-search text-nota-blue text-2xl mr-4 w-8 text-center"></i>
+                            <div>
+                                <h4 class="font-bold">시장·산업·경쟁 리서치</h4>
+                                <p class="text-xs text-slate-500 mt-1">AI·ICT·플랫폼 산업의 변화와 정책·시장 자료를 수집하고, 핵심 쟁점을 비교 가능한 형태로 정리합니다.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-5 bg-slate-50 rounded-xl border border-slate-100">
+                            <i class="fas fa-sitemap text-nota-blue text-xl mr-4 w-8 text-center"></i>
+                            <div>
+                                <h4 class="font-bold">문제 구조화 및 전략 자료화</h4>
+                                <p class="text-xs text-slate-500 mt-1">복잡한 고객·산업 이슈를 문제, 원인, 기회, 실행 과제로 나누어 의사결정에 활용 가능한 문서로 정리합니다.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-5 bg-blue-50/50 rounded-xl border border-blue-100">
+                            <i class="fas fa-chart-line text-nota-blue text-xl mr-4 w-8 text-center"></i>
+                            <div>
+                                <h4 class="font-bold">데이터 기반 Product/Project 지원</h4>
+                                <p class="text-xs text-slate-500 mt-1">사용자 행동 데이터와 VOC를 함께 분석하며 제품 개선, 모니터링 체계, 실행 우선순위 도출을 지원해왔습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold mb-8">Education</h3>
+                    <div class="relative border-l-2 border-slate-100 ml-3 py-2 space-y-12">
+                        <div class="relative pl-8 timeline-item">
+                            <h4 class="text-xl font-bold">핀테크 데이터 분석 전문가 과정</h4>
+                            <p class="text-nota-blue font-semibold mb-2">2025.12.18 - 2026.06.18</p>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Python, SQL, GA4, 자연어 처리 기반 프로젝트를 수행하며 서비스 데이터와 사용자 VOC를 분석하고, 대시보드 형태로 정리하는 실무형 분석 역량을 강화했습니다.
+                            </p>
+                        </div>
+                        <div class="relative pl-8 timeline-item">
+                            <h4 class="text-xl font-bold">고려대학교 일반대학원 HRD 석사</h4>
+                            <p class="text-slate-400 font-semibold mb-2">2022.09 - 2025.08</p>
+                            <p class="text-slate-600 text-sm italic">연구 설계, 설문조사, 통계 분석, 가설 검증, 학술 논문 작성</p>
+                        </div>
+                        <div class="relative pl-8 timeline-item">
+                            <h4 class="text-xl font-bold">한국항공대학교 경영학과</h4>
+                            <p class="text-slate-400 font-semibold mb-2">2018.03 - 2022.02</p>
+                            <p class="text-slate-600 text-sm italic">경영전략, 비즈니스 모델 분석, 조직·인사, ESG/CSR</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding bg-slate-50">
+        <div class="container mx-auto px-6">
+            <h3 class="text-3xl font-bold mb-12 text-center">Research & Execution Support Skills</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
+                    <div class="w-12 h-12 bg-blue-50 border border-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-binoculars text-nota-blue text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">Market Research</h4>
+                    <p class="text-slate-500 text-sm mb-6">AX 시장·산업·경쟁 자료 조사 및 구조화</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">Desk Research</span>
+                        <span class="skill-tag">Market Scan</span>
+                        <span class="skill-tag">Competitor Mapping</span>
+                        <span class="skill-tag">Information Structuring</span>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
+                    <div class="w-12 h-12 bg-blue-50 border border-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-pie text-nota-blue text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">Data Analysis</h4>
+                    <p class="text-slate-500 text-sm mb-6">정량·정성 데이터 분석 및 인사이트 도출</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">GA4</span>
+                        <span class="skill-tag">VOC Analysis</span>
+                        <span class="skill-tag">SPSS</span>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
+                    <div class="w-12 h-12 bg-blue-50 border border-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-file-alt text-nota-blue text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">Documentation</h4>
+                    <p class="text-slate-500 text-sm mb-6">리서치 결과 문서화 및 프로젝트 운영 지원</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">Report Writing</span>
+                        <span class="skill-tag">Meeting Note</span>
+                        <span class="skill-tag">Google Workspace</span>
+                        <span class="skill-tag">Generative AI</span>
+                        <span class="skill-tag">Visualization</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-padding bg-white">
+        <div class="container mx-auto px-6">
+            <h3 class="text-3xl font-bold mb-12 text-center">Key Research Projects</h3>
+            
+            <!-- Project 1: National Policy Research -->
+            <div class="project-card bg-white rounded-3xl overflow-hidden mb-12 shadow-sm border border-slate-100">
+                <div class="grid lg:grid-cols-2">
+                    <div class="p-8 lg:p-12">
+                        <div class="flex items-center space-x-2 mb-4">
+                            <span class="px-3 py-1 bg-nota-blue text-white text-xs font-bold rounded">Industry Research</span>
+                            <span class="px-3 py-1 bg-blue-50 text-nota-blue text-xs font-bold rounded">ICT & AI Policy</span>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-4">교육부 | 국가인재양성기본계획 수립 연구</h4>
+                        <p class="text-slate-600 mb-6 leading-relaxed">
+                            ICT 분야의 산업 변화, 기술 세부영역, 인력 수급 이슈를 조사·구조화하며 국가 단위 인재양성 정책 방향 도출을 지원했습니다. AX 시장 리서치에 필요한 <b>산업 구조화와 정책·시장 자료 정리 역량</b>을 보여주는 프로젝트입니다.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                            <div class="p-5 bg-blue-50/60 rounded-xl border border-blue-100">
+                                <div class="text-nota-blue text-xl mb-3"><i class="fas fa-layer-group"></i></div>
+                                <h5 class="text-sm font-bold mb-2">산업 영역 구조화</h5>
+                                <p class="text-xs text-slate-600 leading-relaxed">AI·빅데이터, 양자기술, 사이버보안, 통신 등 ICT 핵심 분야를 유형화했습니다.</p>
+                            </div>
+                            <div class="p-5 bg-slate-50 rounded-xl border border-slate-100">
+                                <div class="text-nota-blue text-xl mb-3"><i class="fas fa-search"></i></div>
+                                <h5 class="text-sm font-bold mb-2">시장-인재 미스매치 분석</h5>
+                                <p class="text-xs text-slate-600 leading-relaxed">기술 변화 속도와 교육·훈련 체계 간 시차를 분석해 인력 수급 이슈를 도출했습니다.</p>
+                            </div>
+                            <div class="p-5 bg-blue-50/60 rounded-xl border border-blue-100">
+                                <div class="text-nota-blue text-xl mb-3"><i class="fas fa-route"></i></div>
+                                <h5 class="text-sm font-bold mb-2">정책 방향 정리</h5>
+                                <p class="text-xs text-slate-600 leading-relaxed">실무 연계형 교육, AI+X 융합역량, 기초학문 강화 등 방향성을 문서화했습니다.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">ICT 산업 분석</span>
+                            <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">자료 구조화</span>
+                            <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">정책 방향 도출</span>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-8 lg:p-12 flex flex-col justify-center items-center border-l border-slate-100">
+                        <div class="w-full max-w-md bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                            <div class="text-center mb-5">
+                                <p class="text-xs font-bold text-nota-blue mb-1">Industry Research Framework</p>
+                                <h6 class="text-sm font-bold text-slate-800">기술 변화 → 산업 수요 → 인재·정책 과제</h6>
+                            </div>
+                            <div class="grid grid-cols-3 gap-3 mb-5">
+                                <div class="rounded-xl border border-blue-100 p-3 text-center bg-blue-50/40">
+                                    <i class="fas fa-microchip text-nota-blue mb-2"></i>
+                                    <p class="text-[11px] font-bold">Technology</p>
+                                    <p class="text-[10px] text-slate-500 mt-1">AI·보안·통신</p>
+                                </div>
+                                <div class="rounded-xl border border-blue-100 p-3 text-center bg-white">
+                                    <i class="fas fa-industry text-nota-blue mb-2"></i>
+                                    <p class="text-[11px] font-bold">Market</p>
+                                    <p class="text-[10px] text-slate-500 mt-1">산업 수요 변화</p>
+                                </div>
+                                <div class="rounded-xl border border-blue-100 p-3 text-center bg-blue-50/40">
+                                    <i class="fas fa-clipboard-check text-nota-blue mb-2"></i>
+                                    <p class="text-[11px] font-bold">Agenda</p>
+                                    <p class="text-[10px] text-slate-500 mt-1">정책 과제</p>
+                                </div>
+                            </div>
+                            <div class="bg-slate-50 rounded-xl border border-slate-100 p-4">
+                                <p class="text-[11px] font-bold text-slate-700 mb-2">Research Output</p>
+                                <ul class="space-y-1.5 text-[10px] text-slate-500 leading-relaxed">
+                                    <li><i class="fas fa-check text-nota-blue mr-1"></i> 세부 산업·기술 영역별 자료 분류</li>
+                                    <li><i class="fas fa-check text-nota-blue mr-1"></i> 변화 요인과 인력 수요 이슈 연결</li>
+                                    <li><i class="fas fa-check text-nota-blue mr-1"></i> 보고서 작성에 활용 가능한 구조화 문서화</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: my:D App Data Analysis -->
+            <div class="project-card bg-white rounded-3xl overflow-hidden mb-12 shadow-sm border border-slate-100">
+                <div class="grid lg:grid-cols-2">
+                    <div class="p-8 lg:p-12">
+                        <div class="flex items-center space-x-2 mb-4">
+                            <span class="px-3 py-1 bg-nota-blue text-white text-xs font-bold rounded">Product Insight</span>
+                            <span class="px-3 py-1 bg-blue-50 text-nota-blue text-xs font-bold rounded">GA4 & VOC</span>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-4">마이디(my:D) 앱 데이터 분석 및 AI 자동화</h4>
+                        <p class="text-slate-600 mb-6 leading-relaxed">
+                            서비스 행동 데이터와 사용자 VOC를 연결해 제품 이슈를 진단하고, 정량·정성 데이터를 통합 모니터링하는 AI 대시보드 구조를 설계했습니다. 고객 문제를 제품 개선 과제로 바꾸는 <b>Product/Project 지원 역량</b>을 보여주는 프로젝트입니다.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                            <div class="p-5 bg-blue-50/60 rounded-xl border border-blue-100">
+                                <div class="text-nota-blue text-xl mb-3"><i class="fas fa-bullseye"></i></div>
+                                <h5 class="text-sm font-bold mb-2">문제 정의</h5>
+                                <p class="text-xs text-slate-600 leading-relaxed">행동 지표와 VOC가 분산되어 서비스 이슈를 빠르게 파악하기 어려운 상황을 정의했습니다.</p>
+                            </div>
+                            <div class="p-5 bg-slate-50 rounded-xl border border-slate-100">
+                                <div class="text-nota-blue text-xl mb-3"><i class="fas fa-chart-line"></i></div>
+                                <h5 class="text-sm font-bold mb-2">통합 분석</h5>
+                                <p class="text-xs text-slate-600 leading-relaxed">GA4 지표와 3개년 리뷰를 비교해 사용자 행동 변화와 부정 VOC의 동반 패턴을 검토했습니다.</p>
+                            </div>
+                            <div class="p-5 bg-blue-50/60 rounded-xl border border-blue-100">
+                                <div class="text-nota-blue text-xl mb-3"><i class="fas fa-robot"></i></div>
+                                <h5 class="text-sm font-bold mb-2">모니터링 설계</h5>
+                                <p class="text-xs text-slate-600 leading-relaxed">AI 자동 브리핑과 통합 대시보드를 통해 이슈 탐지와 원인 분석의 가시성을 높였습니다.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">GA4 행동 로그</span>
+                            <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">VOC 분석</span>
+                            <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">AI Dashboard</span>
+                        </div>
+                    </div>
+                    <div class="bg-blue-50/20 p-8 lg:p-12 flex flex-col justify-center h-full border-l border-slate-100">
+                        <div class="flex flex-col h-full justify-center">
+                            <p class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest text-center">Integrated AI Dashboard View</p>
+                            <div class="bg-white border border-slate-200 rounded-2xl shadow-md min-h-[380px] flex items-center justify-center text-slate-400 overflow-hidden relative border-dashed border-2">
+                                <img src="https://raw.githubusercontent.com/hmpark-lab/portfolio/main/dashboard.png" 
+                                     alt="my:D AI Dashboard" 
+                                     class="absolute inset-0 w-full h-full object-contain p-2 hidden z-10" 
+                                     onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');"
+                                     onerror="this.classList.add('hidden')">
+                                <div class="text-center p-6">
+                                    <div class="w-16 h-16 bg-blue-50 text-nota-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i class="fas fa-desktop text-2xl"></i>
+                                    </div>
+                                    <p class="text-sm font-semibold text-slate-800">my:D 통합 행동 로그 &amp; VOC AI 대시보드</p>
+                                    <p class="text-xs text-slate-400 mt-2 max-w-xs mx-auto leading-relaxed">
+                                        GA4 행동 KPI 추이와 AI 자동 브리핑을 결합한 통합 모니터링 화면입니다.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <a href="https://hmpark-lab.github.io/portfolio/dashboard.html" target="_blank" class="inline-flex items-center text-xs font-bold text-nota-blue hover:text-blue-800 hover:underline transition-colors">
+                                    <i class="fas fa-external-link-alt mr-1.5"></i> 대시보드 링크 바로가기
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Financial App Review Analysis -->
+            <div class="project-card bg-white rounded-3xl overflow-hidden mb-12 shadow-sm border border-slate-100">
+                <div class="grid lg:grid-cols-2">
+                    <div class="p-8 lg:p-12">
+                        <div class="flex items-center space-x-2 mb-4">
+                            <span class="px-3 py-1 bg-nota-blue text-white text-xs font-bold rounded">Market & User Research</span>
+                            <span class="px-3 py-1 bg-blue-50 text-nota-blue text-xs font-bold rounded">NLP · VOC Mining</span>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-4">앱 리뷰 수집 및 토픽 모델링 기반 시장 반응 분석</h4>
+                        <p class="text-slate-600 mb-6 leading-relaxed">
+                            금융앱 사용자 리뷰를 수집·정제하고 토픽 모델링으로 반복되는 고객 불편과 서비스 기대를 분류했습니다. 시장·경쟁 리서치에서 필요한 <b>비정형 VOC 분석과 고객 니즈 구조화 역량</b>을 보여주는 프로젝트입니다.
+                        </p>
+                        <ul class="space-y-4 mb-8 text-sm text-slate-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-nota-blue mt-1 mr-3"></i>
+                                <span><b>Process:</b> Google Play 리뷰 크롤링 → MySQL 적재 → 불용어 처리 및 형태소 분석으로 분석 가능한 데이터셋 구축</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-nota-blue mt-1 mr-3"></i>
+                                <span><b>Method:</b> LDA 토픽 모델링을 활용해 불만·기대·사용성 관련 키워드를 군집화하고 주요 고객 이슈를 도출</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-nota-blue mt-1 mr-3"></i>
+                                <span><b>Output:</b> 워드클라우드와 T-SNE 시각화를 통해 정성 리뷰를 비교 가능한 리서치 결과물로 문서화</span>
+                            </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">Python</span>
+                            <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">Selenium</span>
+                            <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">LDA Topic Modeling</span>
+                            <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">VOC Insight</span>
+                        </div>
+                        <a href="https://github.com/hmpark-lab/fintech04/blob/main/06Machine_Learning/15.%20%EA%B8%88%EC%9C%B5%EC%95%B1%EB%A6%AC%EB%B7%B0%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0_0304/20%EA%B8%88%EC%9C%B5%EC%95%B1%EB%A6%AC%EB%B7%B0%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0_wordcloud_LDA%2BT-sne.ipynb" target="_blank" class="inline-flex items-center text-xs font-bold text-nota-blue hover:underline mt-4">
+                            <i class="fab fa-github mr-2 text-base"></i> View Source Code on GitHub
+                        </a>
+                    </div>
+                    <div class="bg-slate-50 p-8 lg:p-12 border-l border-slate-100">
+                        <div class="grid grid-cols-1 gap-6 h-full">
+                            <div class="flex flex-col items-center justify-center">
+                                <p class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest">Word Cloud Analysis</p>
+                                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-3 w-full">
+                                    <img src="https://raw.githubusercontent.com/hmpark-lab/fintech04/main/10%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B8%B0%ED%9A%8D/kbcard_project/img/hana(pos)%20word%20cloud.png" 
+                                         alt="Word Cloud" class="rounded-xl bg-white object-contain w-full max-h-52">
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center justify-center">
+                                <p class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest">T-SNE Visualization</p>
+                                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-3 w-full">
+                                    <img src="https://raw.githubusercontent.com/hmpark-lab/fintech04/main/10%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B8%B0%ED%9A%8D/kbcard_project/img/hana(neg)%20t-sne.png" 
+                                         alt="T-SNE" class="rounded-xl bg-white object-contain w-full max-h-52">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JD Match Section -->
+    <section class="section-padding bg-nota-deep text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h3 class="text-3xl font-bold mb-16">How I Match <span class="text-blue-300">Nota AI-Industry Team</span></h3>
+                <div class="grid md:grid-cols-2 gap-12 text-left">
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 border-l-4 border-blue-400 pl-4">AX 시장·산업 리서치</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">제조·건설·유통 등 산업별 AI 적용 가능성과 경쟁 환경을 조사하고, 의사결정에 필요한 핵심 정보를 구조화할 수 있습니다.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 border-l-4 border-blue-400 pl-4">문제 구조화와 전략 문서화</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">복잡한 요구사항을 문제, 원인, 공통분모, 실행 과제로 나누어 전략 검토와 제품화 논의에 활용 가능한 문서로 정리합니다.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 border-l-4 border-blue-400 pl-4">Product·Project 지원</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">서비스 데이터 분석과 대시보드 설계 경험을 바탕으로 제품-시장 적합성 탐색, 프로젝트 진행 관리, 산출물 정리에 기여할 수 있습니다.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 border-l-4 border-blue-400 pl-4">미팅·자료 정리 실행력</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">컨설팅 실무와 연구 프로젝트를 통해 자료 조사, 회의 내용 정리, 보고서 작성, 후속 액션 정리의 기본기를 쌓아왔습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-3xl font-bold mb-8">Contact Information</h3>
+            <p class="text-slate-500 mb-12">산업 문제를 구조화하고, AI 제품 전략의 실행을 돕는 Research Assistant가 되겠습니다.</p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-10">
+                <div class="flex items-center space-x-3"><i class="fas fa-envelope text-nota-blue"></i><span class="font-bold">hmabcpark@kakao.com</span></div>
+                <div class="flex items-center space-x-3"><i class="fas fa-phone text-nota-blue"></i><span class="font-bold">010-9190-7276</span></div>
+                <div class="flex items-center space-x-3"><i class="fab fa-github text-nota-blue"></i><a href="https://github.com/hmpark-lab/fintech04" target="_blank" class="hover:text-nota-blue font-bold underline">Github</a></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 bg-slate-50 text-center text-slate-400 text-xs">
+        <p>© 2026 Research Assistant Portfolio. Optimized for Nota AI-Industry Application.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
