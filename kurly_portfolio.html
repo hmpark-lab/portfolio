@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>성과보상 담당자 포트폴리오 | Kurly 지원</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800&display=swap');
+
+    :root {
+      --kurly-purple: #5F0080;
+      --kurly-deep: #3B0051;
+      --kurly-light: #F8F2FB;
+      --kurly-soft: #FBF7FD;
+      --kurly-accent: #8B2BB3;
+      --kurly-text: #241332;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      scroll-behavior: smooth;
+      background-color: #ffffff;
+      color: var(--kurly-text);
+    }
+
+    .bg-kurly-purple { background-color: var(--kurly-purple); }
+    .text-kurly-purple { color: var(--kurly-purple); }
+    .bg-kurly-light { background-color: var(--kurly-light); }
+    .text-kurly-deep { color: var(--kurly-deep); }
+
+    .section-padding { padding: 80px 0; }
+
+    .project-card {
+      transition: all 0.35s ease;
+      border: 1px solid #ede7f1;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 35px -12px rgba(95, 0, 128, 0.18);
+      border-color: var(--kurly-purple);
+    }
+
+    .skill-tag {
+      background-color: #F8F2FB;
+      color: var(--kurly-deep);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1px solid #eadcf1;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--kurly-purple), #9C27B0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -9px;
+      top: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: var(--kurly-purple);
+      border: 4px solid #fff;
+      box-shadow: 0 0 0 1px var(--kurly-purple);
+    }
+
+    .flow-arrow::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -18px;
+      width: 2px;
+      height: 18px;
+      background: #d8b7e7;
+      transform: translateX(-50%);
+    }
+
+    .flow-arrow:last-child::after { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-purple-100">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <img
+          alt="Kurly logo"
+          src="https://opening-attachments.greetinghr.com/2026-02-23/23bb5db7-3937-4bef-998b-867b25bceae7/logo.png"
+          class="h-8 w-auto object-contain"
+        >
+        <span class="hidden sm:inline-block h-6 w-px bg-purple-100"></span>
+        <span class="font-bold text-sm sm:text-lg tracking-[0.16em] text-slate-600 uppercase">HR Portfolio</span>
+      </div>
+
+      <div class="hidden md:flex space-x-8 text-sm font-bold text-slate-600">
+        <a href="#home" class="hover:text-kurly-purple transition">Home</a>
+        <a href="#about" class="hover:text-kurly-purple transition">About</a>
+        <a href="#skills" class="hover:text-kurly-purple transition">Skills</a>
+        <a href="#projects" class="hover:text-kurly-purple transition">Projects</a>
+        <a href="#contact" class="hover:text-kurly-purple transition">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="pt-32 pb-20 lg:pt-48 lg:pb-32 bg-gradient-to-br from-purple-50 via-white to-fuchsia-50">
+    <div class="container mx-auto px-6">
+      <div class="max-w-5xl">
+        <h2 class="text-sm font-bold text-kurly-purple tracking-[0.2em] mb-5 uppercase">
+          Kurly Performance &amp; Rewards
+        </h2>
+
+        <h1 class="leading-tight mb-8">
+
+    <span class="block text-2xl lg:text-3xl font-semibold text-slate-500 mb-4 tracking-wide">
+        People Analytics
+    </span>
+
+    <span class="block text-5xl lg:text-7xl font-extrabold gradient-text">
+        데이터로 조직을 이해하고<br>
+        더 나은 성과제도로 연결하다
+    </span>
+
+</h1>
+
+        <p class="text-xl text-slate-600 mb-10 leading-relaxed max-w-3xl">
+          HR 석사 연구, 역량진단 기반 Gap 분석, 데이터 분석 프로젝트 경험을 바탕으로<br>
+          인사 데이터를 분석하고, 체계적인 성과·보상 ​제도로 연결합니다.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="#projects" class="bg-kurly-purple text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-900 transition shadow-lg shadow-purple-100">
+            주요 프로젝트 보기
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About & Education Section -->
+  <section id="about" class="section-padding bg-white">
+    <div class="container mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <div>
+          <h3 class="text-3xl font-bold mb-8">Professional Summary</h3>
+          <p class="text-slate-600 mb-6 leading-relaxed">
+            컬리의 <b>성과보상 담당자</b>에게 필요한 역량은 제도를 단순히 운영하는 것을 넘어,
+            조직의 성장 단계와 사업 전략에 맞게 성과관리 프로세스를 안정적으로 운영하고,
+            인사 데이터를 근거로 개선 방향을 제안하는 것이라고 생각합니다.
+          </p>
+
+          <div class="grid grid-cols-1 gap-4">
+            <div class="flex items-center p-5 bg-purple-50/60 rounded-xl border border-purple-100">
+              <i class="fas fa-sitemap text-kurly-purple text-2xl mr-4 w-8 text-center"></i>
+              <div>
+                <h4 class="font-bold">성과관리 프로세스 이해와 운영 감각</h4>
+                <p class="text-xs text-slate-500 mt-1">
+                  역량진단, 목표 수준 비교, 결과 리포팅 경험을 바탕으로 평가·성과관리 프로세스를 단계적으로 이해하고 관리할 수 있습니다.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-center p-5 bg-purple-50/60 rounded-xl border border-purple-100">
+              <i class="fas fa-chart-bar text-kurly-purple text-xl mr-4 w-8 text-center"></i>
+              <div>
+                <h4 class="font-bold">인사 데이터 정리 및 분석 결과 보고</h4>
+                <p class="text-xs text-slate-500 mt-1">
+                  정량 데이터를 정리하고 Gap과 핵심 패턴을 도출하여, 의사결정자가 이해하기 쉬운 보고서와 시각화 자료로 구현합니다.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-center p-5 bg-purple-50/60 rounded-xl border border-purple-100">
+              <i class="fas fa-search text-kurly-purple text-xl mr-4 w-8 text-center"></i>
+              <div>
+                <h4 class="font-bold">제도 개선을 위한 리서치 역량</h4>
+                <p class="text-xs text-slate-500 mt-1">
+                  학술자료, 시장 벤치마킹, 사용자 VOC 분석 경험을 통해 문제를 구조화하고 개선 방향의 근거를 찾는 리서치 역량을 갖추었습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-3xl font-bold mb-8">Education</h3>
+          <div class="relative border-l-2 border-purple-100 ml-3 py-2 space-y-12">
+            <div class="relative pl-8 timeline-item">
+              <h4 class="text-xl font-bold">고려대학교 일반대학원 인적자원개발전공 석사</h4>
+              <p class="text-kurly-purple font-semibold mb-2">2022.09 - 2025.08</p>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                조직행동, 팀 효과성, 심리적 안전감 석사 논문. SPSS 통계 분석, 가설 검증, 학위논문 작성.
+              </p>
+            </div>
+
+            <div class="relative pl-8 timeline-item">
+              <h4 class="text-xl font-bold">핀테크 서비스 기획 및 데이터 분석 전문가 과정</h4>
+              <p class="text-slate-400 font-semibold mb-2">2025.12 - 2026.06</p>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Python, SQL, 데이터 전처리, 시각화, 텍스트 분석 프로젝트를 수행하며 분석 결과를 보고서와 대시보드로 구현.
+              </p>
+            </div>
+
+            <div class="relative pl-8 timeline-item">
+              <h4 class="text-xl font-bold">한국항공대학교 경영학과</h4>
+              <p class="text-slate-400 font-semibold mb-2">2018.03 - 2022.02</p>
+              <p class="text-slate-600 text-sm italic">인사관리, 조직행동, 경영전략, 회계·통계 기초</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section-padding bg-purple-50/30">
+    <div class="container mx-auto px-6">
+      <h3 class="text-3xl font-bold mb-12 text-center">HR Operation &amp; Analysis Skills</h3>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-2xl border border-purple-100 shadow-sm">
+          <div class="w-12 h-12 bg-purple-50 border border-purple-100 rounded-xl flex items-center justify-center mb-6">
+            <i class="fas fa-clipboard-list text-kurly-purple text-xl"></i>
+          </div>
+          <h4 class="text-xl font-bold mb-4">HR Operation</h4>
+          <p class="text-slate-500 text-sm mb-6">성과관리·평가 운영 지원을 위한 프로세스 관리</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Process Planning</span>
+            <span class="skill-tag">HR Reporting</span>
+            <span class="skill-tag">Checklist</span>
+            <span class="skill-tag">Google Workspace</span>
+            <span class="skill-tag">MS Office</span>
+          </div>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl border border-purple-100 shadow-sm">
+          <div class="w-12 h-12 bg-purple-50 border border-purple-100 rounded-xl flex items-center justify-center mb-6">
+            <i class="fas fa-chart-pie text-kurly-purple text-xl"></i>
+          </div>
+          <h4 class="text-xl font-bold mb-4">Data Analysis</h4>
+          <p class="text-slate-500 text-sm mb-6">인사 데이터 정리와 분석 결과 시각화</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Excel / Sheets</span>
+            <span class="skill-tag">SPSS</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">Visualization</span>
+          </div>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl border border-purple-100 shadow-sm">
+          <div class="w-12 h-12 bg-purple-50 border border-purple-100 rounded-xl flex items-center justify-center mb-6">
+            <i class="fas fa-file-alt text-kurly-purple text-xl"></i>
+          </div>
+          <h4 class="text-xl font-bold mb-4">Research &amp; Documentation</h4>
+          <p class="text-slate-500 text-sm mb-6">제도 개선을 위한 리서치와 문서화</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Benchmarking</span>
+            <span class="skill-tag">Academic Research</span>
+            <span class="skill-tag">Report Writing</span>
+            <span class="skill-tag">VOC Analysis</span>
+            <span class="skill-tag">Generative AI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section-padding bg-white">
+    <div class="container mx-auto px-6">
+      <h3 class="text-3xl font-bold mb-12 text-center">Key Projects</h3>
+
+      <!-- Project 1: HR Gap Analysis -->
+      <div class="project-card bg-white rounded-3xl overflow-hidden mb-12 shadow-sm border border-purple-100">
+        <div class="grid lg:grid-cols-2">
+          <div class="p-8 lg:p-12">
+            <div class="flex items-center space-x-2 mb-4">
+              <span class="px-3 py-1 bg-kurly-purple text-white text-xs font-bold rounded">HR Data Analysis</span>
+              <span class="px-3 py-1 bg-purple-50 text-kurly-purple text-xs font-bold rounded">Performance Reporting</span>
+            </div>
+
+            <h4 class="text-2xl font-bold mb-4">역량진단 Gap 분석 및 AI 기반 보고서 자동화</h4>
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              약 200명의 역량진단 결과를 기반으로 현재 수준과 요구 수준의 차이를 분석하고,
+              개별 결과 보고서를 자동화하는 프로세스를 설계했습니다. 이를 통해 인사 데이터를
+              정리·분석하고 보고서로 구현하는 성과관리형 분석 역량을 증명했습니다.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <div class="p-5 bg-purple-50/60 rounded-xl border border-purple-100">
+                <div class="text-kurly-purple text-xl mb-3">
+                  <i class="fas fa-bullseye"></i>
+                </div>
+                <h5 class="text-sm font-bold mb-2">문제 정의</h5>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  진단 결과를 개인별로 수작업 정리해야 해 보고서 작성 시간이 길고 품질 편차가 발생했습니다.
+                </p>
+              </div>
+
+              <div class="p-5 bg-purple-50/60 rounded-xl border border-purple-100">
+                <div class="text-kurly-purple text-xl mb-3">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h5 class="text-sm font-bold mb-2">Gap 분석</h5>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  현재 수준과 요구 수준을 비교해 역량별 Gap을 도출하고, 우선 개선 영역을 구조화했습니다.
+                </p>
+              </div>
+
+              <div class="p-5 bg-purple-50/60 rounded-xl border border-purple-100">
+                <div class="text-kurly-purple text-xl mb-3">
+                  <i class="fas fa-robot"></i>
+                </div>
+                <h5 class="text-sm font-bold mb-2">자동화 설계</h5>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  분석 결과를 AI 기반 문장 생성과 템플릿에 연동해 개인별 보고서 작성 시간을 단축했습니다.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">HR 데이터 정리</span>
+              <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">역량 Gap 분석</span>
+              <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">보고서 자동화</span>
+            </div>
+          </div>
+
+          <div class="bg-purple-50/40 p-8 lg:p-12 flex flex-col justify-center items-center border-l border-purple-100">
+            <div class="w-full max-w-md bg-white rounded-2xl border border-purple-100 shadow-sm p-6">
+              <p class="text-xs font-bold text-kurly-purple mb-1 uppercase tracking-widest text-center">HR Reporting Process</p>
+              <h5 class="text-lg font-bold text-center mb-6">Before → After 프로세스 개선</h5>
+
+              <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                  <p class="text-xs font-bold text-slate-400 mb-3">Before</p>
+                  <ul class="space-y-2 text-xs text-slate-600">
+                    <li><i class="fas fa-times text-red-400 mr-1"></i> 개인별 수작업 작성</li>
+                    <li><i class="fas fa-times text-red-400 mr-1"></i> 반복 입력·검수 부담</li>
+                    <li><i class="fas fa-times text-red-400 mr-1"></i> 리포트 품질 편차</li>
+                  </ul>
+                </div>
+
+                <div class="rounded-xl bg-purple-50 border border-purple-100 p-4">
+                  <p class="text-xs font-bold text-kurly-purple mb-3">After</p>
+                  <ul class="space-y-2 text-xs text-slate-600">
+                    <li><i class="fas fa-check text-kurly-purple mr-1"></i> 데이터 기반 자동 초안</li>
+                    <li><i class="fas fa-check text-kurly-purple mr-1"></i> 템플릿 표준화</li>
+                    <li><i class="fas fa-check text-kurly-purple mr-1"></i> 보고서 작성시간 단축</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="space-y-3">
+                <div class="relative flow-arrow bg-white border border-purple-100 rounded-xl p-3 text-sm font-bold text-center">
+                  역량진단 결과 정리
+                </div>
+                <div class="relative flow-arrow bg-white border border-purple-100 rounded-xl p-3 text-sm font-bold text-center">
+                  현재 수준 vs 요구 수준 Gap 분석
+                </div>
+                <div class="relative flow-arrow bg-white border border-purple-100 rounded-xl p-3 text-sm font-bold text-center">
+                  AI 기반 개인별 보고서 자동화
+                </div>
+                <div class="relative bg-kurly-purple text-white rounded-xl p-3 text-sm font-bold text-center">
+                  보고서 작성시간 약 60% 단축
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- Project 2: Research & Report Structuring -->
+<div class="project-card bg-white rounded-3xl overflow-hidden mb-12 shadow-sm border border-gray-100">
+    <div class="grid lg:grid-cols-2">
+        <div class="p-8 lg:p-12">
+            <div class="flex items-center space-x-2 mb-4">
+                <span class="px-3 py-1 bg-kurly-purple text-white text-xs font-bold rounded">Research & Reporting</span>
+                <span class="px-3 py-1 bg-purple-50 text-purple-700 text-xs font-bold rounded">Benchmarking</span>
+            </div>
+
+            <h4 class="text-2xl font-bold mb-4">교육부 | 국가인재양성기본계획 수립 연구</h4>
+
+            <p class="text-gray-600 mb-6 leading-relaxed">
+                ICT 산업 변화와 인력 수급 이슈를 조사·분석하고, 복잡한 자료를 정책 보고서 형태로 구조화하며
+                리서치 결과를 의사결정에 활용 가능한 보고서로 작성했습니다.
+            </p>
+
+            <!-- Key Research Points -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="p-5 bg-purple-50/50 rounded-xl border border-purple-100">
+                    <div class="text-kurly-purple text-xl mb-3">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h5 class="text-sm font-bold mb-2">자료 조사 및 벤치마킹</h5>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        국내외 산업·정책 자료를 수집하고 주요 동향을 비교하며 핵심 이슈를 정리했습니다.
+                    </p>
+                </div>
+
+                <div class="p-5 bg-fuchsia-50/50 rounded-xl border border-fuchsia-100">
+                    <div class="text-purple-700 text-xl mb-3">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h5 class="text-sm font-bold mb-2">이슈 구조화</h5>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        AI·빅데이터, 양자기술, 사이버보안 등 ICT 세부 분야별 인력 수급 이슈를 유형화했습니다.
+                    </p>
+                </div>
+
+                <div class="p-5 bg-purple-50/50 rounded-xl border border-purple-100">
+                    <div class="text-kurly-purple text-xl mb-3">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h5 class="text-sm font-bold mb-2">보고서 구현</h5>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        분석 결과를 표·문장·도식으로 정리하여 정책 방향과 실행 과제를 보고서 형태로 구현했습니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-gray-100 rounded-full text-xs font-bold text-gray-500">시장·정책 리서치</span>
+                <span class="px-3 py-1 bg-gray-100 rounded-full text-xs font-bold text-gray-500">자료 구조화</span>
+                <span class="px-3 py-1 bg-gray-100 rounded-full text-xs font-bold text-gray-500">보고서 작성</span>
+            </div>
+        </div>
+
+        <div class="bg-purple-50/30 p-8 lg:p-12 flex flex-col justify-center items-center border-l border-gray-100">
+            <!-- HR Research Infographic -->
+            <div class="w-full max-w-md bg-white rounded-xl border border-purple-100 p-5 text-left shadow-sm">
+                <div class="text-center mb-5">
+                    <p class="text-xs font-bold text-kurly-purple mb-1">Research to Report Framework</p>
+                    <h6 class="text-sm font-bold text-gray-800">자료 수집 → 이슈 구조화 → 보고서화</h6>
+                </div>
+
+                <div class="grid grid-cols-3 gap-3 mb-5">
+                    <div class="bg-white rounded-lg border border-purple-100 p-3 text-center">
+                        <div class="w-9 h-9 bg-purple-50 text-kurly-purple rounded-full flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-database text-sm"></i>
+                        </div>
+                        <p class="text-[11px] font-bold text-gray-700">Research</p>
+                        <p class="text-[10px] text-gray-500 mt-1">자료 수집<br>벤치마킹</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg border border-fuchsia-100 p-3 text-center">
+                        <div class="w-9 h-9 bg-fuchsia-50 text-purple-700 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-sitemap text-sm"></i>
+                        </div>
+                        <p class="text-[11px] font-bold text-gray-700">Structure</p>
+                        <p class="text-[10px] text-gray-500 mt-1">이슈 분류<br>핵심 쟁점 도출</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg border border-purple-100 p-3 text-center">
+                        <div class="w-9 h-9 bg-purple-50 text-kurly-purple rounded-full flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-file-signature text-sm"></i>
+                        </div>
+                        <p class="text-[11px] font-bold text-gray-700">Report</p>
+                        <p class="text-[10px] text-gray-500 mt-1">분석 결과<br>문서화</p>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between mb-5 px-2">
+                    <div class="h-0.5 bg-purple-100 absolute left-6 right-6 top-1/2"></div>
+                    <div class="relative z-10 w-3 h-3 bg-kurly-purple rounded-full"></div>
+                    <div class="relative z-10 w-3 h-3 bg-purple-400 rounded-full"></div>
+                    <div class="relative z-10 w-3 h-3 bg-kurly-purple rounded-full"></div>
+                </div>
+
+                <div class="bg-purple-50/40 rounded-lg border border-purple-100 p-4">
+                    <p class="text-[11px] font-bold text-gray-700 mb-2">
+                        컬리 성과보상 직무와의 연결점
+                    </p>
+                    <ul class="space-y-1.5 text-[10px] text-gray-500 leading-relaxed">
+                        <li><i class="fas fa-check text-kurly-purple mr-1"></i> 시장·제도 자료를 비교하고 핵심 쟁점으로 정리</li>
+                        <li><i class="fas fa-check text-kurly-purple mr-1"></i> 복잡한 정보를 단계적으로 분류하여 보고서화</li>
+                        <li><i class="fas fa-check text-kurly-purple mr-1"></i> 제도 개선 검토에 필요한 리서치 기반 의사결정 지원</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      <!-- Project 3: Financial App VOC Analysis -->
+      <div class="project-card bg-white rounded-3xl overflow-hidden mb-12 shadow-sm border border-purple-100">
+        <div class="grid lg:grid-cols-2">
+          <div class="p-8 lg:p-12">
+            <div class="flex items-center space-x-2 mb-4">
+              <span class="px-3 py-1 bg-kurly-purple text-white text-xs font-bold rounded">Data Visualization</span>
+              <span class="px-3 py-1 bg-purple-50 text-kurly-purple text-xs font-bold rounded">VOC Analysis</span>
+            </div>
+
+            <h4 class="text-2xl font-bold mb-4">금융앱 리뷰 수집 및 토픽 모델링 기반 분석</h4>
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              금융앱 리뷰 데이터를 수집·정제하고, 텍스트 마이닝과 시각화를 통해 고객 불만 요인을 구조화했습니다.
+              분석 결과를 보고서 형태로 정리하며, 데이터 기반으로 문제를 설명하고 개선 인사이트를 도출하는 역량을 강화했습니다.
+            </p>
+
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-kurly-purple mt-1 mr-3"></i>
+                <span class="text-slate-700"><b>Data:</b> 구글 플레이스토어 리뷰 크롤링, MySQL 적재, 결측·중복 제거 및 텍스트 전처리</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-kurly-purple mt-1 mr-3"></i>
+                <span class="text-slate-700"><b>Analysis:</b> 형태소 분석, 불용어 처리, LDA 토픽 모델링으로 주요 불만 키워드 군집화</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-kurly-purple mt-1 mr-3"></i>
+                <span class="text-slate-700"><b>Output:</b> 워드클라우드와 T-SNE 시각화로 분석 결과를 직관적인 리포트로 구현</span>
+              </li>
+            </ul>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">Python</span>
+              <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">Selenium</span>
+              <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">LDA</span>
+              <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">Visualization</span>
+            </div>
+
+            <a href="https://github.com/hmpark-lab/fintech04/blob/main/06Machine_Learning/15.%20%EA%B8%88%EC%9C%B5%EC%95%B1%EB%A6%AC%EB%B7%B0%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0_0304/20%EA%B8%88%EC%9C%B5%EC%95%B1%EB%A6%AC%EB%B7%B0%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0_wordcloud_LDA%2BT-sne.ipynb" target="_blank" class="inline-flex items-center text-xs font-bold text-kurly-purple hover:underline mt-4">
+              <i class="fab fa-github mr-2 text-base"></i> View Source Code on GitHub
+            </a>
+          </div>
+
+          <div class="bg-purple-50/40 p-8 lg:p-12 border-l border-purple-100">
+            <div class="grid grid-cols-1 gap-6 h-full">
+              <div class="flex flex-col items-center">
+                <p class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest">Word Cloud Analysis</p>
+                <img src="https://raw.githubusercontent.com/hmpark-lab/fintech04/main/10%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B8%B0%ED%9A%8D/kbcard_project/img/hana(pos)%20word%20cloud.png"
+                     alt="Word Cloud"
+                     class="rounded-xl shadow-md border border-purple-100 bg-white object-contain w-full max-h-48">
+              </div>
+
+              <div class="flex flex-col items-center">
+                <p class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest">T-SNE Visualization</p>
+                <img src="https://raw.githubusercontent.com/hmpark-lab/fintech04/main/10%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B8%B0%ED%9A%8D/kbcard_project/img/hana(neg)%20t-sne.png"
+                     alt="T-SNE"
+                     class="rounded-xl shadow-md border border-purple-100 bg-white object-contain w-full max-h-48">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- JD Match Section -->
+  <section class="section-padding bg-[#241332] text-white">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <h3 class="text-3xl font-bold mb-16">How I Match <span class="text-purple-300">Kurly HR</span></h3>
+
+        <div class="grid md:grid-cols-2 gap-12 text-left">
+          <div>
+            <h4 class="text-xl font-bold mb-4 border-l-4 border-purple-300 pl-4">성과관리 운영/개선 관점</h4>
+            <p class="text-purple-100/80 text-sm leading-relaxed">
+              평가와 진단 결과를 단순 취합하는 데 그치지 않고, 현재 수준과 목표 수준의 차이를 분석해 개선 방향을 도출하는 관점으로 접근합니다.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-xl font-bold mb-4 border-l-4 border-purple-300 pl-4">정확하고 꼼꼼한 HR 운영</h4>
+            <p class="text-purple-100/80 text-sm leading-relaxed">
+              사업평가 및 결과보고서 작성 경험을 통해 일정, 문서, 데이터 검수 과정을 단계적으로 관리하는 운영 감각을 쌓았습니다.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-xl font-bold mb-4 border-l-4 border-purple-300 pl-4">인사 데이터 분석 및 보고서화</h4>
+            <p class="text-purple-100/80 text-sm leading-relaxed">
+              HR 석사 연구와 데이터 분석 프로젝트를 통해 정량·정성 자료를 정리하고, 분석 결과를 보고서와 시각화 자료로 설명해왔습니다.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-xl font-bold mb-4 border-l-4 border-purple-300 pl-4">제도 개선을 위한 리서치</h4>
+            <p class="text-purple-100/80 text-sm leading-relaxed">
+              학술자료, 시장 벤치마킹, VOC 분석 경험을 바탕으로 제도 개선에 필요한 근거 자료를 빠르게 수집하고 구조화할 수 있습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section-padding bg-white">
+    <div class="container mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-8">Contact Information</h3>
+      <p class="text-slate-500 mb-12">
+        조직의 성장을 데이터로 읽고, 안정적이고 공정한 성과관리 운영에 기여하겠습니다.
+      </p>
+
+      <div class="flex flex-col md:flex-row justify-center items-center gap-10">
+        <div class="flex items-center space-x-3">
+          <i class="fas fa-envelope text-kurly-purple"></i>
+          <span class="font-bold">hmabcpark@kakao.com</span>
+        </div>
+
+        <div class="flex items-center space-x-3">
+          <i class="fas fa-phone text-kurly-purple"></i>
+          <span class="font-bold">010-9190-7276</span>
+        </div>
+
+        <div class="flex items-center space-x-3">
+          <i class="fab fa-github text-kurly-purple"></i>
+          <a href="https://github.com/hmpark-lab" target="_blank" class="hover:text-kurly-purple font-bold underline">Github Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 bg-purple-50/40 text-center text-slate-400 text-xs">
+    <p>© 2026 HR Performance & Rewards Portfolio. Optimized for Kurly Application.</p>
+  </footer>
+
+  <!-- Smooth Scrolling Script -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
