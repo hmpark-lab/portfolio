@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기술인재육성 포트폴리오 | 현대엔지비 지원</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800&display=swap');
+
+    :root {
+      --ngv-blue: #003B7A;
+      --ngv-deep: #062D5B;
+      --ngv-orange: #F5A623;
+      --ngv-sky: #EAF3FB;
+      --ngv-soft: #F7FAFD;
+      --ngv-text: #17233A;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      scroll-behavior: smooth;
+      background: #fff;
+      color: var(--ngv-text);
+    }
+
+    .bg-ngv-blue { background-color: var(--ngv-blue); }
+    .bg-ngv-deep { background-color: var(--ngv-deep); }
+    .text-ngv-blue { color: var(--ngv-blue); }
+    .text-ngv-orange { color: var(--ngv-orange); }
+
+    .section-padding { padding: 84px 0; }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--ngv-blue) 0%, #2465A8 58%, var(--ngv-orange) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .project-card {
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+      border: 1px solid #dfe8f2;
+    }
+
+    .project-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 22px 45px -18px rgba(0, 59, 122, .26);
+      border-color: var(--ngv-blue);
+    }
+
+    .skill-tag {
+      background: #EEF5FB;
+      color: var(--ngv-deep);
+      padding: 5px 12px;
+      border-radius: 9999px;
+      font-size: .82rem;
+      font-weight: 700;
+      border: 1px solid #D6E7F5;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -9px;
+      top: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--ngv-blue);
+      border: 4px solid #fff;
+      box-shadow: 0 0 0 1px var(--ngv-blue);
+    }
+
+    .flow-arrow::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -18px;
+      width: 2px;
+      height: 18px;
+      background: #BFD7EB;
+      transform: translateX(-50%);
+    }
+
+    .flow-arrow:last-child::after { display: none; }
+
+    .metric-ring {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(var(--ngv-orange) 0 68%, #DCEAF6 68% 100%);
+      position: relative;
+    }
+
+    .metric-ring::after {
+      content: '';
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      background: white;
+      position: absolute;
+    }
+
+    .metric-ring span { position: relative; z-index: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full bg-white/92 backdrop-blur-md z-50 border-b border-slate-100">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <img
+          src="https://infra1-static.recruiter.co.kr/builder/2025/08/05/b5558da1-53b6-4448-a8df-9265256c93a7.jpg"
+          alt="현대엔지비"
+          class="h-9 w-auto object-contain rounded-sm"
+        >
+        <span class="hidden sm:inline-block h-6 w-px bg-slate-200"></span>
+        <span class="font-bold text-sm sm:text-lg tracking-[0.14em] text-slate-600 uppercase">Portfolio</span>
+      </div>
+      <div class="hidden md:flex gap-8 text-sm font-bold text-slate-600">
+        <a href="#home" class="hover:text-ngv-blue transition">Home</a>
+        <a href="#about" class="hover:text-ngv-blue transition">About</a>
+        <a href="#skills" class="hover:text-ngv-blue transition">Skills</a>
+        <a href="#projects" class="hover:text-ngv-blue transition">Projects</a>
+        <a href="#contact" class="hover:text-ngv-blue transition">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="pt-32 pb-20 lg:pt-48 lg:pb-32 bg-gradient-to-br from-blue-50 via-white to-orange-50/40">
+    <div class="container mx-auto px-6">
+      <div class="max-w-5xl">
+        <h2 class="text-sm font-extrabold text-ngv-blue tracking-[0.22em] mb-5 uppercase">
+          Hyundai NGV · Technical Talent Development
+        </h2>
+        <h1 class="leading-tight mb-8">
+          <span class="block text-5xl lg:text-7xl font-extrabold text-slate-900">HRD × DATA</span>
+          <span class="block mt-4 text-4xl lg:text-6xl font-extrabold gradient-text">
+            기술인재의 성장을 설계하다
+          </span>
+        </h1>
+        <p class="text-xl text-slate-600 mb-10 leading-relaxed max-w-3xl">
+          교육 니즈를 데이터로 진단하고, 역량 수준에 맞는 학습체계를 설계하며,
+          운영 결과를 다시 개선으로 연결해왔습니다. 기술 변화와 현업 요구 사이의 간극을 줄이는
+          데이터 기반 인재육성에 기여하겠습니다.
+        </p>
+        <a href="#projects" class="inline-flex items-center bg-ngv-blue text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-900 transition shadow-lg shadow-blue-100">
+          주요 프로젝트 보기 <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section-padding bg-white">
+    <div class="container mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <div>
+          <h3 class="text-3xl font-bold mb-8">Professional Summary</h3>
+          <p class="text-slate-600 mb-6 leading-relaxed">
+            현대엔지비의 기술인재육성 업무는 교육을 운영하는 데서 끝나는 것이 아니라,
+            <b>직무·역량 요구를 정의하고, 교육과정을 설계하며, 효과를 측정해 지속적으로 고도화하는 일</b>이라고 생각합니다.
+          </p>
+          <div class="grid gap-4">
+            <div class="flex items-center p-5 bg-blue-50/70 rounded-xl border border-blue-100">
+              <i class="fas fa-search text-ngv-blue text-2xl mr-4 w-8 text-center"></i>
+              <div>
+                <h4 class="font-bold">교육 요구 분석 및 역량 진단</h4>
+                <p class="text-xs text-slate-500 mt-1">자가진단, 설문, 인터뷰와 Gap 분석을 통해 교육이 필요한 우선 역량을 구체화합니다.</p>
+              </div>
+            </div>
+            <div class="flex items-center p-5 bg-blue-50/70 rounded-xl border border-blue-100">
+              <i class="fas fa-layer-group text-ngv-blue text-xl mr-4 w-8 text-center"></i>
+              <div>
+                <h4 class="font-bold">수준별 교육체계 및 과정 설계</h4>
+                <p class="text-xs text-slate-500 mt-1">학습자 수준과 현업 과제를 연결해 기초·활용·심화 단계의 교육 로드맵을 설계합니다.</p>
+              </div>
+            </div>
+            <div class="flex items-center p-5 bg-orange-50/70 rounded-xl border border-orange-100">
+              <i class="fas fa-chart-line text-orange-500 text-xl mr-4 w-8 text-center"></i>
+              <div>
+                <h4 class="font-bold">교육 효과 측정 및 프로세스 개선</h4>
+                <p class="text-xs text-slate-500 mt-1">만족도와 사전·사후 역량 데이터를 분석하고, AI와 자동화를 활용해 교육 운영의 정확성과 효율을 높였습니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-3xl font-bold mb-8">Education</h3>
+          <div class="relative border-l-2 border-blue-100 ml-3 py-2 space-y-12">
+            <div class="relative pl-8 timeline-item">
+              <h4 class="text-xl font-bold">핀테크 데이터 분석 전문가 과정</h4>
+              <p class="text-ngv-blue font-semibold mb-2">2025.12 - 2026.06</p>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Python, SQL, 데이터 전처리, 시각화, 텍스트 분석 프로젝트를 수행하며 분석 결과를 보고서와 대시보드로 구현.
+              </p>
+            </div>
+
+            <div class="relative pl-8 timeline-item">
+              <h4 class="text-xl font-bold">고려대학교 일반대학원 인적자원개발전공 석사</h4>
+              <p class="text-slate-400 font-semibold mb-2">2022.09 - 2025.08</p>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                조직행동, 팀 효과성, 심리적 안전감 석사 논문. SPSS 통계 분석, 가설 검증, 학위논문 작성.
+              </p>
+            </div>
+
+            <div class="relative pl-8 timeline-item">
+              <h4 class="text-xl font-bold">한국항공대학교 경영학과</h4>
+              <p class="text-slate-400 font-semibold mb-2">2018.03 - 2022.02</p>
+              <p class="text-slate-600 text-sm italic">인사관리, 조직행동, 경영전략, 회계·통계 기초</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section-padding bg-slate-50">
+    <div class="container mx-auto px-6">
+      <h3 class="text-3xl font-bold mb-12 text-center">Talent Development Skills</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-2xl border border-blue-100 shadow-sm">
+          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
+            <i class="fas fa-clipboard-list text-ngv-blue text-xl"></i>
+          </div>
+          <h4 class="text-xl font-bold mb-4">Needs Analysis</h4>
+          <p class="text-slate-500 text-sm mb-6">역량 요구와 현업 문제를 교육과제로 전환</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Survey Design</span><span class="skill-tag">Interview</span>
+            <span class="skill-tag">Gap Analysis</span><span class="skill-tag">Competency Model</span>
+            <span class="skill-tag">Locus for Focus</span>
+          </div>
+        </div>
+        <div class="bg-white p-8 rounded-2xl border border-blue-100 shadow-sm">
+          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
+            <i class="fas fa-route text-ngv-blue text-xl"></i>
+          </div>
+          <h4 class="text-xl font-bold mb-4">Learning Design</h4>
+          <p class="text-slate-500 text-sm mb-6">수준별·직무별 교육 로드맵과 실습 설계</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Curriculum Design</span><span class="skill-tag">AI Education</span>
+            <span class="skill-tag">Facilitator Collaboration</span><span class="skill-tag">Program Operation</span>
+          </div>
+        </div>
+        <div class="bg-white p-8 rounded-2xl border border-orange-100 shadow-sm">
+          <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-6">
+            <i class="fas fa-chart-column text-orange-500 text-xl"></i>
+          </div>
+          <h4 class="text-xl font-bold mb-4">Evaluation & Improvement</h4>
+          <p class="text-slate-500 text-sm mb-6">교육 효과 분석과 AI 기반 운영 개선</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Excel / Sheets</span><span class="skill-tag">SPSS</span>
+            <span class="skill-tag">Python</span><span class="skill-tag">Report Automation</span>
+            <span class="skill-tag">Generative AI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section-padding bg-white">
+    <div class="container mx-auto px-6">
+      <h3 class="text-3xl font-bold mb-12 text-center">Key Projects</h3>
+
+      <!-- Project 1 -->
+      <div class="project-card bg-white rounded-3xl overflow-hidden mb-12 shadow-sm">
+        <div class="grid lg:grid-cols-2">
+          <div class="p-8 lg:p-12">
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+              <span class="px-3 py-1 bg-ngv-blue text-white text-xs font-bold rounded">Learning Architecture</span>
+              <span class="px-3 py-1 bg-orange-50 text-orange-600 text-xs font-bold rounded">AI Talent Development</span>
+            </div>
+            <h4 class="text-2xl font-bold mb-4">AI 역량진단 기반 맞춤형 교육체계 구축</h4>
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              동일 과정 중심의 교육에서 벗어나 학습자의 AI 활용 수준을 진단하고,
+              기초·활용·심화 트랙으로 연결되는 맞춤형 교육체계를 설계·운영했습니다.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <div class="p-5 bg-blue-50/70 rounded-xl border border-blue-100">
+                <i class="fas fa-stethoscope text-ngv-blue text-xl mb-3"></i>
+                <h5 class="text-sm font-bold mb-2">역량 진단</h5>
+                <p class="text-xs text-slate-600 leading-relaxed">AI 이해·업무 활용·프롬프트·검증 역량을 기준으로 자가진단 구조를 개발했습니다.</p>
+              </div>
+              <div class="p-5 bg-blue-50/70 rounded-xl border border-blue-100">
+                <i class="fas fa-layer-group text-ngv-blue text-xl mb-3"></i>
+                <h5 class="text-sm font-bold mb-2">수준별 설계</h5>
+                <p class="text-xs text-slate-600 leading-relaxed">진단 결과와 교육 니즈에 따라 Basic 부터 Advanced까지 수준별 트랙을 구성했습니다.</p>
+              </div>
+              <div class="p-5 bg-orange-50/70 rounded-xl border border-orange-100">
+                <i class="fas fa-rotate text-orange-500 text-xl mb-3"></i>
+                <h5 class="text-sm font-bold mb-2">효과 측정</h5>
+                <p class="text-xs text-slate-600 leading-relaxed">사전·사후 역량과 만족도를 분석해 과정 효과를 확인하고 후속 개선안을 도출했습니다.</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">자가진단 개발</span>
+              <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">수준별 커리큘럼</span>
+              <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">강사 협업</span>
+              <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">효과성 분석</span>
+            </div>
+          </div>
+
+          <div class="bg-blue-50/40 p-8 lg:p-12 flex items-center justify-center border-l border-blue-100">
+            <div class="w-full max-w-md bg-white rounded-2xl border border-blue-100 shadow-sm p-6">
+              <p class="text-xs font-extrabold text-ngv-blue mb-1 uppercase tracking-widest text-center">AI Learning System</p>
+              <h5 class="text-lg font-bold text-center mb-7">진단 → 설계 → 운영 → 평가</h5>
+              <div class="space-y-3 mb-7">
+                <div class="relative flow-arrow rounded-xl border border-blue-100 p-3 text-center font-bold text-sm">AI 활용역량 자가진단</div>
+                <div class="relative flow-arrow rounded-xl border border-blue-100 p-3 text-center font-bold text-sm">수준별 교육 트랙 매칭</div>
+                <div class="relative flow-arrow rounded-xl border border-blue-100 p-3 text-center font-bold text-sm">현업 과제 중심 실습 운영</div>
+                <div class="relative rounded-xl bg-ngv-blue text-white p-3 text-center font-bold text-sm">사전·사후 효과 측정 및 개선</div>
+              </div>
+              <div class="grid grid-cols-2 gap-5">
+                <div class="text-center p-4 bg-orange-50 rounded-xl border border-orange-100">
+                  <p class="text-3xl font-extrabold text-orange-500">+68%</p>
+                  <p class="text-xs text-slate-500 mt-1">사전·사후 역량 향상</p>
+                </div>
+                <div class="text-center p-4 bg-blue-50 rounded-xl border border-blue-100">
+                  <p class="text-3xl font-extrabold text-ngv-blue">4.8/5</p>
+                  <p class="text-xs text-slate-500 mt-1">과정 만족도</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card bg-white rounded-3xl overflow-hidden mb-12 shadow-sm">
+        <div class="grid lg:grid-cols-2">
+          <div class="p-8 lg:p-12">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-ngv-blue text-white text-xs font-bold rounded">Competency Modeling</span>
+              <span class="px-3 py-1 bg-blue-50 text-ngv-blue text-xs font-bold rounded">Training Needs Analysis</span>
+            </div>
+            <h4 class="text-2xl font-bold mb-4">직무역량 모델링 및 교육 우선순위 도출</h4>
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              인터뷰와 설문을 통해 직무별 요구역량을 구조화하고, 현재 수준과 중요도 데이터를 결합해
+              교육이 필요한 우선순위 역량을 도출하는 분석 체계를 설계했습니다.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <div class="p-5 bg-blue-50/70 rounded-xl border border-blue-100">
+                <i class="fas fa-comments text-ngv-blue text-xl mb-3"></i>
+                <h5 class="text-sm font-bold mb-2">현업 의견 수집</h5>
+                <p class="text-xs text-slate-600 leading-relaxed">직무 인터뷰와 문헌조사를 통해 역량 후보군과 행동지표를 정리했습니다.</p>
+              </div>
+              <div class="p-5 bg-blue-50/70 rounded-xl border border-blue-100">
+                <i class="fas fa-list-check text-ngv-blue text-xl mb-3"></i>
+                <h5 class="text-sm font-bold mb-2">설문·검증 설계</h5>
+                <p class="text-xs text-slate-600 leading-relaxed">현재 수준, 중요도, 필요수준을 측정하고 문항 타당성과 신뢰도를 검토했습니다.</p>
+              </div>
+              <div class="p-5 bg-orange-50/70 rounded-xl border border-orange-100">
+                <i class="fas fa-crosshairs text-orange-500 text-xl mb-3"></i>
+                <h5 class="text-sm font-bold mb-2">우선순위 도출</h5>
+                <p class="text-xs text-slate-600 leading-relaxed">Borich 요구도와 Locus for Focus를 활용해 핵심 교육영역을 선별했습니다.</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">역량모델링</span>
+              <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">Borich 요구도</span>
+              <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">Locus for Focus</span>
+            </div>
+          </div>
+
+          <div class="bg-slate-50 p-8 lg:p-12 border-l border-blue-100 flex items-center justify-center">
+            <div class="w-full max-w-xl bg-white rounded-2xl border border-blue-100 shadow-sm p-6">
+              <div class="flex items-center justify-between mb-2">
+                <div>
+                  <p class="text-xs font-extrabold text-ngv-blue uppercase tracking-widest">Training Priority Map</p>
+                  <h5 class="text-lg font-bold mt-1">교육 우선순위 도출 <span class="text-sm font-medium text-slate-400">(예시)</span></h5>
+                </div>
+                <div class="w-10 h-10 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center">
+                  <i class="fas fa-location-dot"></i>
+                </div>
+              </div>
+
+              <p class="text-xs text-slate-500 mb-5">현재 수준과 필요 수준의 차이, 역량별 중요도를 함께 비교해 우선 개발 영역을 시각화했습니다.</p>
+
+              <div class="relative rounded-xl overflow-hidden border border-emerald-100 bg-[#effbf6]">
+                <svg viewBox="0 0 760 470" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="교육 우선순위 산점도 예시">
+                  <rect x="0" y="0" width="760" height="470" fill="#effbf6"/>
+
+                  <!-- Plot background -->
+                  <rect x="85" y="45" width="505" height="350" fill="#f5fffa"/>
+
+                  <!-- Horizontal grid -->
+                  <g stroke="#40d58a" stroke-width="1.5" opacity="0.9">
+                    <line x1="85" y1="75" x2="590" y2="75"/>
+                    <line x1="85" y1="135" x2="590" y2="135"/>
+                    <line x1="85" y1="195" x2="590" y2="195"/>
+                    <line x1="85" y1="255" x2="590" y2="255"/>
+                    <line x1="85" y1="315" x2="590" y2="315"/>
+                    <line x1="85" y1="375" x2="590" y2="375"/>
+                  </g>
+
+                  <!-- Axes -->
+                  <line x1="85" y1="395" x2="590" y2="395" stroke="#555" stroke-width="1.5"/>
+                  <line x1="85" y1="45" x2="85" y2="395" stroke="#555" stroke-width="1.5"/>
+
+                  <!-- Quadrant divider / thresholds -->
+                  <line x1="335" y1="45" x2="335" y2="395" stroke="#aab5b0" stroke-width="2" stroke-dasharray="5 4"/>
+                  <line x1="85" y1="215" x2="590" y2="215" stroke="#aab5b0" stroke-width="2" stroke-dasharray="5 4"/>
+
+                  <!-- Priority region outline -->
+                  <rect x="105" y="65" width="465" height="155" rx="18" fill="none" stroke="#ff3b30" stroke-width="3" stroke-dasharray="5 4"/>
+
+                  <!-- Quadrant labels -->
+                  <text x="175" y="120" font-size="28" font-weight="800" fill="#3f4543">Ⅱ 순위 영역</text>
+                  <text x="395" y="120" font-size="28" font-weight="800" fill="#3f4543">Ⅰ 순위 영역</text>
+
+                  <!-- Y tick labels -->
+                  <g font-size="14" font-weight="700" fill="#42c98a">
+                    <text x="52" y="80">50</text>
+                    <text x="52" y="140">45</text>
+                    <text x="52" y="200">40</text>
+                    <text x="52" y="260">35</text>
+                    <text x="52" y="320">30</text>
+                    <text x="52" y="380">25</text>
+                  </g>
+
+                  <!-- X tick labels -->
+                  <g font-size="13" font-weight="700" fill="#42c98a">
+                    <text x="97" y="420">3.70</text>
+                    <text x="190" y="420">3.75</text>
+                    <text x="285" y="420">3.80</text>
+                    <text x="380" y="420">3.85</text>
+                    <text x="475" y="420">3.90</text>
+                    <text x="555" y="420">3.95</text>
+                  </g>
+
+                  <!-- Axis titles -->
+                  <text x="280" y="455" font-size="15" font-weight="700" fill="#555">희망보유수준 평균</text>
+                  <text x="25" y="250" font-size="15" font-weight="700" fill="#555" transform="rotate(-90 25 250)">차이</text>
+
+                  <!-- Scatter points, positioned to mirror the reference -->
+                  <g stroke="#ffffff" stroke-width="2">
+                    <circle cx="515" cy="120" r="7" fill="#ffad63"/>
+                    <circle cx="445" cy="160" r="7" fill="#2d8d84"/>
+                    <circle cx="390" cy="170" r="7" fill="#b890f5"/>
+                    <circle cx="340" cy="158" r="7" fill="#f49ac1"/>
+                    <circle cx="290" cy="175" r="7" fill="#6da8ff"/>
+                    <circle cx="310" cy="195" r="7" fill="#d14cb8"/>
+                    <circle cx="260" cy="215" r="7" fill="#ff7c83"/>
+                    <circle cx="330" cy="215" r="7" fill="#ffc93d"/>
+                    <circle cx="170" cy="215" r="7" fill="#5fc5bd"/>
+                    <circle cx="450" cy="230" r="7" fill="#67a66b"/>
+                    <circle cx="485" cy="230" r="7" fill="#ef594b"/>
+                    <circle cx="235" cy="285" r="7" fill="#bb6a2f"/>
+                    <circle cx="310" cy="315" r="7" fill="#4965b2"/>
+                    <circle cx="350" cy="365" r="7" fill="#405a67"/>
+                  </g>
+
+                  <!-- Legend -->
+                  <g font-size="12" fill="#3f4543">
+                    <text x="625" y="55" font-weight="800">역량명</text>
+                    <circle cx="620" cy="80" r="5" fill="#6da8ff"/><text x="633" y="84">글로벌 사고력</text>
+                    <circle cx="620" cy="103" r="5" fill="#2d8d84"/><text x="633" y="107">대중소통 능력</text>
+                    <circle cx="620" cy="126" r="5" fill="#d14cb8"/><text x="633" y="130">디지털 리터러시</text>
+                    <circle cx="620" cy="149" r="5" fill="#ff7c83"/><text x="633" y="153">메타인지</text>
+                    <circle cx="620" cy="172" r="5" fill="#ef594b"/><text x="633" y="176">몰입력</text>
+                    <circle cx="620" cy="195" r="5" fill="#67a66b"/><text x="633" y="199">비판적 사고</text>
+                    <circle cx="620" cy="218" r="5" fill="#4965b2"/><text x="633" y="222">사회적 가치</text>
+                    <circle cx="620" cy="241" r="5" fill="#b890f5"/><text x="633" y="245">연구데이터 시각화</text>
+                    <circle cx="620" cy="264" r="5" fill="#ffad63"/><text x="633" y="268">연구데이터 활용</text>
+                    <circle cx="620" cy="287" r="5" fill="#5fc5bd"/><text x="633" y="291">연구사례관리</text>
+                    <circle cx="620" cy="310" r="5" fill="#405a67"/><text x="633" y="314">정서지능</text>
+                    <circle cx="620" cy="333" r="5" fill="#bb6a2f"/><text x="633" y="337">진로성숙도</text>
+                    <circle cx="620" cy="356" r="5" fill="#f49ac1"/><text x="633" y="360">코칭역량</text>
+                    <circle cx="620" cy="379" r="5" fill="#ffc93d"/><text x="633" y="383">학습 민첩성</text>
+                  </g>
+                </svg>
+              </div>
+
+              <div class="mt-5 grid grid-cols-2 gap-3 text-xs">
+                <div class="rounded-xl bg-blue-50 border border-blue-100 p-3">
+                  <p class="font-bold text-ngv-blue mb-1">Borich 요구도</p>
+                  <p class="text-slate-500 leading-relaxed">필요수준과 현재수준의 차이에 중요도를 반영해 교육 요구도를 계산</p>
+                </div>
+                <div class="rounded-xl bg-orange-50 border border-orange-100 p-3">
+                  <p class="font-bold text-orange-600 mb-1">Locus for Focus</p>
+                  <p class="text-slate-500 leading-relaxed">중요도와 역량 Gap의 평균을 기준으로 우선 개발영역을 선별</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card bg-white rounded-3xl overflow-hidden mb-12 shadow-sm">
+        <div class="grid lg:grid-cols-2">
+          <div class="p-8 lg:p-12">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-ngv-blue text-white text-xs font-bold rounded">Learning Analytics</span>
+              <span class="px-3 py-1 bg-orange-50 text-orange-600 text-xs font-bold rounded">AI Automation</span>
+            </div>
+            <h4 class="text-2xl font-bold mb-4">역량진단 개별 보고서 AI 자동화</h4>
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              약 200명의 역량진단 결과를 일관된 기준으로 해석하고 개인별 피드백 보고서로 제공하기 위해,
+              데이터 정리·Gap 분석·문장 생성·검수로 이어지는 자동화 프로세스를 구축했습니다.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <div class="p-5 bg-blue-50/70 rounded-xl border border-blue-100">
+                <i class="fas fa-table text-ngv-blue text-xl mb-3"></i>
+                <h5 class="text-sm font-bold mb-2">데이터 표준화</h5>
+                <p class="text-xs text-slate-600 leading-relaxed">개인별 진단값과 역량별 기준을 동일한 템플릿으로 정리했습니다.</p>
+              </div>
+              <div class="p-5 bg-blue-50/70 rounded-xl border border-blue-100">
+                <i class="fas fa-wand-magic-sparkles text-ngv-blue text-xl mb-3"></i>
+                <h5 class="text-sm font-bold mb-2">AI 초안 생성</h5>
+                <p class="text-xs text-slate-600 leading-relaxed">Gap과 강·약점을 기반으로 개인별 피드백 문장을 자동 생성했습니다.</p>
+              </div>
+              <div class="p-5 bg-orange-50/70 rounded-xl border border-orange-100">
+                <i class="fas fa-check-circle text-ngv-blue text-xl mb-3"></i>
+                <h5 class="text-sm font-bold mb-2">품질 검수</h5>
+                <p class="text-xs text-slate-600 leading-relaxed">템플릿과 체크리스트를 적용해 표현의 일관성과 데이터 정확성을 확보했습니다.</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">약 200명</span>
+              <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">AI 피드백 생성</span>
+              <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-500">보고서 표준화</span>
+            </div>
+          </div>
+
+          <div class="bg-blue-50/40 p-8 lg:p-12 flex items-center justify-center border-l border-blue-100">
+            <div class="w-full max-w-md bg-white rounded-2xl border border-blue-100 shadow-sm p-6">
+              <p class="text-xs font-extrabold text-ngv-blue mb-1 uppercase tracking-widest text-center">Automated Feedback Report</p>
+              <h5 class="text-lg font-bold text-center mb-6">Before → After</h5>
+              <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                  <p class="text-xs font-bold text-slate-400 mb-3">Before</p>
+                  <ul class="space-y-2 text-xs text-slate-600">
+                    <li><i class="fas fa-times text-red-400 mr-1"></i> 개인별 수작업</li>
+                    <li><i class="fas fa-times text-red-400 mr-1"></i> 반복 입력·검수</li>
+                    <li><i class="fas fa-times text-red-400 mr-1"></i> 표현 품질 편차</li>
+                  </ul>
+                </div>
+                <div class="rounded-xl bg-blue-50 border border-blue-100 p-4">
+                  <p class="text-xs font-bold text-ngv-blue mb-3">After</p>
+                  <ul class="space-y-2 text-xs text-slate-600">
+                    <li><i class="fas fa-check text-ngv-blue mr-1"></i> 데이터 자동 연동</li>
+                    <li><i class="fas fa-check text-ngv-blue mr-1"></i> 개인별 초안 생성</li>
+                    <li><i class="fas fa-check text-ngv-blue mr-1"></i> 표준화된 검수</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="relative flow-arrow rounded-xl border border-blue-100 p-3 text-center text-sm font-bold">진단 데이터 입력</div>
+                <div class="relative flow-arrow rounded-xl border border-blue-100 p-3 text-center text-sm font-bold">역량별 Gap 및 강·약점 분석</div>
+                <div class="relative flow-arrow rounded-xl border border-blue-100 p-3 text-center text-sm font-bold">AI 개인 피드백 초안 생성</div>
+                <div class="relative rounded-xl bg-ngv-blue text-white p-3 text-center text-sm font-bold">보고서 작성시간 약 60% 단축</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-xs text-slate-400 leading-relaxed text-center max-w-3xl mx-auto mt-4">
+        본 포트폴리오는 고객사 및 참여자의 개인정보와 프로젝트 기밀 보호를 위해 실제 산출물과 데이터를 비식별화하거나 재구성하여 표현했습니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- JD Match -->
+  <section class="section-padding bg-ngv-deep text-white">
+    <div class="container mx-auto px-6">
+      <div class="max-w-5xl mx-auto text-center">
+        <h3 class="text-3xl font-bold mb-16">How I Match <span class="text-orange-300">Hyundai NGV</span></h3>
+        <div class="grid md:grid-cols-2 gap-12 text-left">
+          <div>
+            <h4 class="text-xl font-bold mb-4 border-l-4 border-orange-300 pl-4">HRD 컨설팅 및 교육체계 구축</h4>
+            <p class="text-blue-100/80 text-sm leading-relaxed">교육 요구를 조사하고 역량체계·과정 로드맵·운영 방안을 연결한 경험으로 기술교육 체계 구축을 지원할 수 있습니다.</p>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold mb-4 border-l-4 border-orange-300 pl-4">데이터 기반 교육 요구분석</h4>
+            <p class="text-blue-100/80 text-sm leading-relaxed">설문, 인터뷰, Borich 요구도, Locus for Focus 등을 활용해 교육 우선순위를 근거 기반으로 도출합니다.</p>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold mb-4 border-l-4 border-orange-300 pl-4">교육 운영 및 이해관계자 협업</h4>
+            <p class="text-blue-100/80 text-sm leading-relaxed">고객사, 강사, 운영 인력과 일정·자료·품질 기준을 조율하며 다수의 공공 교육 프로젝트를 안정적으로 운영했습니다.</p>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold mb-4 border-l-4 border-orange-300 pl-4">AI를 활용한 HRD 고도화</h4>
+            <p class="text-blue-100/80 text-sm leading-relaxed">자가진단, 교육 콘텐츠, 개인별 피드백 보고서에 생성형 AI를 적용해 학습경험과 운영 효율을 함께 개선했습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section-padding bg-white">
+    <div class="container mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-8">Contact Information</h3>
+      <p class="text-slate-500 mb-12">기술과 교육을 연결하고, 데이터로 인재육성의 효과를 높이겠습니다.</p>
+      <div class="flex flex-col md:flex-row justify-center items-center gap-10">
+        <div class="flex items-center gap-3"><i class="fas fa-envelope text-ngv-blue"></i><span class="font-bold">hmabcpark@kakao.com</span></div>
+        <div class="flex items-center gap-3"><i class="fas fa-phone text-ngv-blue"></i><span class="font-bold">010-9190-7276</span></div>
+        <div class="flex items-center gap-3"><i class="fab fa-github text-ngv-blue"></i><a href="https://github.com/hmpark-lab" target="_blank" class="hover:text-ngv-blue font-bold underline">Github Portfolio</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 bg-slate-50 text-center text-slate-400 text-xs">
+    <p>© 2026 Technical Talent Development Portfolio. Optimized for Hyundai NGV Application.</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
