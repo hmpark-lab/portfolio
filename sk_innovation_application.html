@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>SK Careers 지원서</title>
+  <style>
+    :root{
+      --bg:#f2f4f9;
+      --card:#fff;
+      --line:#dfe1e6;
+      --muted:#747474;
+      --orange:#ff6b16;
+      --red:#ef0038;
+      --blue:#1457a5;
+      --text:#090909;
+      --soft:#f6f7fa;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+      letter-spacing:-.02em;
+    }
+    button,input,select,textarea{font:inherit}
+    .header{
+      position:sticky; top:0; z-index:50;
+      height:132px; background:#fff;
+      border-bottom:1px solid #eceef2;
+      display:flex; align-items:flex-end;
+    }
+    .header-inner{
+      width:min(100%,1100px); margin:0 auto;
+      height:92px; padding:0 34px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .logo{
+      font-size:34px; font-weight:900; letter-spacing:-1.8px;
+      background:linear-gradient(90deg,#ef0038 0 32%,#ff7217 55%,#f26b21 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .menu{width:43px;height:34px;display:grid;align-content:space-between;background:none;border:0;padding:2px;cursor:pointer}
+    .menu span{height:4px;background:#111;border-radius:3px;width:100%}
+    .page{
+      width:min(100%,820px);
+      margin:0 auto;
+      padding:28px 22px 100px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:26px;
+      padding:42px 36px;
+      margin-bottom:28px;
+    }
+    .section-title{
+      margin:0 0 34px;
+      font-size:34px; font-weight:900;
+      display:flex; align-items:center; gap:18px;
+    }
+    .section-title::before{
+      content:""; width:8px; height:33px; border-radius:8px; background:var(--orange); flex:none;
+    }
+    .field{margin-bottom:28px}
+    .floating{position:relative}
+    .floating label{
+      position:absolute; left:25px; top:-14px;
+      background:white; padding:0 8px;
+      color:#707070; font-size:22px; line-height:1;
+      z-index:2;
+    }
+    .input,.select,.textarea{
+      width:100%; border:2px solid var(--line);
+      border-radius:9px; background:#fff;
+      color:#111; outline:none;
+      transition:.18s;
+    }
+    .input,.select{height:118px;padding:28px 28px;font-size:27px}
+    .input[readonly]{background:#f4f4f4}
+    .input:focus,.select:focus,.textarea:focus{border-color:#999}
+    .select{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='12' viewBox='0 0 18 12'%3E%3Cpath d='M2 2l7 7 7-7' fill='none' stroke='%23000' stroke-width='2.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 28px center}
+    .placeholder{color:#797979}
+    .phone-row,.address-row,.choice-row{display:grid;gap:14px}
+    .phone-row,.address-row{grid-template-columns:1.6fr .9fr}
+    .small-btn{
+      border:0;border-radius:8px;background:#d4d5dc;color:#111;
+      font-size:24px;padding:0 18px;
+    }
+    .choice-label{font-size:27px;margin:0 0 15px;font-weight:500}
+    .choice-row{grid-template-columns:1fr 1fr}
+    .choice{
+      height:116px;border:2px solid var(--line);border-radius:8px;background:#fff;
+      font-size:25px;cursor:pointer;
+    }
+    .choice.active{
+      border-color:var(--red);background:#fff6f8;color:var(--red);
+      font-weight:800;text-decoration:underline;
+    }
+    .help{
+      color:var(--blue);font-size:21px;line-height:1.55;margin:18px 0;
+    }
+    .add-btn{
+      width:100%;height:116px;border:2px dashed #777;border-radius:7px;
+      background:var(--soft);color:#676767;font-size:25px;font-weight:700;
+      margin-top:18px;cursor:pointer;
+    }
+    .added{
+      margin-top:18px;padding:22px;border:1px solid #ddd;border-radius:10px;background:#fafafa;
+      display:grid;gap:12px;
+    }
+    .added input{height:54px;border:1px solid #d8d8d8;border-radius:7px;padding:0 14px;font-size:17px}
+    .remove{justify-self:end;border:0;background:#222;color:#fff;border-radius:6px;padding:8px 13px;cursor:pointer}
+    .question{margin-bottom:48px}
+    .qnum{font-size:31px;margin:0 0 28px}
+    .qtext{font-size:27px;line-height:1.5;margin:0 0 24px}
+    .textarea{min-height:265px;resize:vertical;padding:20px;font-size:20px}
+    .counter{text-align:right;color:#757575;font-size:20px;margin-top:8px}
+    .agree-title{font-size:28px;font-weight:700;margin:0 0 28px}
+    .checkline{display:flex;align-items:flex-start;gap:14px;font-size:22px}
+    .checkline input{width:32px;height:32px;accent-color:var(--red);margin-top:2px}
+    .notice{
+      background:#fff;border:3px solid #dedfe3;border-radius:24px;
+      padding:42px 36px;margin-bottom:38px;
+    }
+    .notice strong{font-size:26px;display:block;margin-bottom:8px}
+    .notice p{color:var(--blue);font-size:21px;margin:0 0 0 46px}
+    .notice-icon{
+      display:inline-flex;width:34px;height:34px;border:4px solid #ffc8cf;border-radius:50%;
+      align-items:center;justify-content:center;color:#ff9bac;margin-right:12px;vertical-align:-5px;
+    }
+    .actions{display:grid;gap:14px;max-width:600px;margin:0 auto}
+    .actions button{
+      height:112px;border:0;border-radius:7px;color:#fff;font-size:31px;font-weight:900;cursor:pointer
+    }
+    .save{background:#000}.submit{background:var(--red)}
+    .floating-nav{
+      position:fixed;right:max(18px,calc((100vw - 820px)/2 + 18px));bottom:34px;z-index:40;
+      width:68px;height:68px;border:0;border-radius:50%;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.12);
+      font-size:34px;cursor:pointer
+    }
+    .drawer{
+      position:fixed;inset:0 0 0 auto;width:min(84vw,380px);background:#fff;z-index:100;
+      padding:34px;transform:translateX(100%);transition:.25s;box-shadow:-10px 0 30px rgba(0,0,0,.14)
+    }
+    .drawer.open{transform:translateX(0)}
+    .drawer h3{font-size:26px;margin-top:60px}
+    .drawer a{display:block;padding:14px 0;color:#111;text-decoration:none;border-bottom:1px solid #eee;font-size:19px}
+    .drawer-close{position:absolute;right:22px;top:22px;border:0;background:none;font-size:32px}
+    @media(max-width:600px){
+      .header{height:108px}
+      .header-inner{height:76px;padding:0 28px}
+      .logo{font-size:29px}
+      .menu{width:38px;height:30px}
+      .page{padding:22px 22px 90px}
+      .card{border-radius:22px;padding:34px 28px;margin-bottom:24px}
+      .section-title{font-size:30px;margin-bottom:32px;gap:14px}
+      .section-title::before{height:29px;width:7px}
+      .input,.select{height:100px;font-size:24px;padding:25px 24px}
+      .floating label{font-size:19px;left:19px}
+      .choice-label{font-size:23px}
+      .choice{height:96px;font-size:22px}
+      .qtext{font-size:24px}
+      .textarea{min-height:240px}
+      .add-btn{height:98px;font-size:23px}
+      .help{font-size:18px}
+      .actions button{height:98px;font-size:28px}
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">SK Careers</div>
+      <button class="menu" id="menuBtn" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <aside class="drawer" id="drawer">
+    <button class="drawer-close" id="drawerClose">×</button>
+    <h3>지원서 목차</h3>
+    <a href="#job">지원 공고</a>
+    <a href="#personal">인적 사항</a>
+    <a href="#apply">지원 정보</a>
+    <a href="#education">학력</a>
+    <a href="#career">경력</a>
+    <a href="#license">자격/면허</a>
+    <a href="#language">어학·외국어 능력</a>
+    <a href="#essay">자기소개서</a>
+    <a href="#agree">동의 사항</a>
+  </aside>
+
+  <main class="page">
+    <section class="card" id="job">
+      <h2 class="section-title">지원 공고</h2>
+      <div style="display:grid;gap:24px;font-size:21px;line-height:1.7;">
+        <div>
+          <strong style="display:block;font-size:25px;margin-bottom:8px;">SK이노베이션 조직문화 부서 인턴 모집</strong>
+        </div>
+        <div>
+          <strong>담당 업무</strong>
+          <p style="margin:8px 0 0;color:#444;">조직문화 관련 서베이 등 Raw Data 정리 및 관리, 데이터 정확성 검수, 운영 업무 지원</p>
+        </div>
+        <div>
+          <strong>자격요건</strong>
+          <p style="margin:8px 0 0;color:#444;">통계·경영·교육·심리학 전공 대학(원) 휴학 또는 졸업자, 데이터 분석 역량 및 경험 보유자, MS Office 활용 역량 중급 이상</p>
+        </div>
+        <div>
+          <strong>우대사항</strong>
+          <p style="margin:8px 0 0;color:#444;">데이터 분석 경험, HR 분야 커리어 개발 희망자, HR 관련 인턴·아르바이트 경험, Power Query 활용 경험</p>
+        </div>
+        <div>
+          <strong>근무정보</strong>
+          <p style="margin:8px 0 0;color:#444;">SK이노베이션 본사(종로구 서린동) · 2026년 8월 말~10월 말 · 09:00~18:00 · 시급 11,000원 · 중식 제공</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="personal">
+      <h2 class="section-title">인적 사항</h2>
+
+      <div class="field floating">
+        <label>성명 *</label><input class="input persist" value="박혜민" readonly>
+      </div>
+      <div class="field floating">
+        <label>이메일 *</label><input class="input persist" value="hmbcpark@kakao.com" type="email">
+      </div>
+      <div class="field phone-row">
+        <div class="floating"><label>휴대폰 번호 *</label><input class="input persist" value="010-9190-7276"></div>
+        <button class="small-btn" type="button">인증완료</button>
+      </div>
+      <div class="field floating">
+        <label>생년월일 *</label><input class="input persist" value="1998-07-01" readonly>
+      </div>
+      <div class="field floating">
+        <label>성별 *</label><input class="input persist" value="여성" readonly>
+      </div>
+      <div class="field">
+        <select class="select persist"><option>국적 *필수항목</option><option>대한민국</option></select>
+      </div>
+      <div class="field address-row">
+        <input class="input persist" placeholder="주소 *">
+        <button class="small-btn" type="button">우편번호 찾기</button>
+      </div>
+      <div class="field"><input class="input persist" placeholder="기본주소 *" readonly></div>
+      <div class="field"><input class="input persist" placeholder="상세주소 *"></div>
+
+      <div class="field">
+        <p class="choice-label">보훈 정보 *</p>
+        <div class="choice-row" data-choice="veteran"><button class="choice active" type="button">비대상</button><button class="choice" type="button">대상</button></div>
+      </div>
+      <div class="field">
+        <p class="choice-label">병역 사항 *</p>
+        <div class="choice-row" data-choice="military"><button class="choice active" type="button">비대상</button><button class="choice" type="button">대상</button></div>
+      </div>
+      <div class="field">
+        <p class="choice-label">장애정보 *</p>
+        <div class="choice-row" data-choice="disability"><button class="choice active" type="button">비대상</button><button class="choice" type="button">대상</button></div>
+      </div>
+    </section>
+
+    <section class="card" id="apply">
+      <h2 class="section-title">지원 정보</h2>
+      <p class="choice-label">지원 직무 *</p>
+      <div class="field"><select class="select persist"><option selected>SK이노베이션 조직문화 부서 인턴</option></select></div>
+      <p class="choice-label">근무 지역 *</p>
+      <div class="field"><select class="select persist"><option>근무 지역 *필수항목</option><option selected>서울 종로구 서린동</option></select></div>
+      <div class="field"><select class="select persist"><option>고용형태 *필수항목</option><option selected>인턴</option><option>계약직</option><option>정규직</option></select></div>
+      <div class="field"><select class="select persist"><option>지원 경로 *필수항목</option><option>SK Careers</option><option>채용 플랫폼</option></select></div>
+    </section>
+
+    <section class="card" id="education">
+      <h2 class="section-title">학력</h2>
+      <div class="field"><select class="select persist"><option>최종 학력 *필수항목</option><option>대학원 졸업</option><option>대학교 졸업</option></select></div>
+      <p class="help">※ 졸업/졸업예정인 상태의 경우에만 최종학력으로 인식됩니다.</p>
+      <p class="help">※ 재학중/휴학/중퇴/수료의 경우 이전 학력을 최종학력으로 선택해 주시기 바랍니다.</p>
+      <p class="help">※ 대학원 학력 정보 입력 시 대학(학사) 정보는 필수로 입력해 주시기 바랍니다.</p>
+      <div id="educationList"></div>
+      <button class="add-btn" type="button" data-add="고등학교" data-target="educationList">고등학교 학력 정보 추가 ＋</button>
+      <button class="add-btn" type="button" data-add="대학교" data-target="educationList">대학 학력 정보 추가 ＋</button>
+      <button class="add-btn" type="button" data-add="대학원" data-target="educationList">대학원 학력 정보 추가 ＋</button>
+    </section>
+
+    <section class="card" id="career">
+      <h2 class="section-title">경력</h2>
+      <div id="careerList"></div>
+      <button class="add-btn" type="button" data-add="경력" data-target="careerList">경력 사항 추가 ＋</button>
+    </section>
+
+    <section class="card" id="license">
+      <h2 class="section-title">자격/면허</h2>
+      <div id="licenseList"></div>
+      <button class="add-btn" type="button" data-add="자격/면허" data-target="licenseList">자격/면허 추가 ＋</button>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">어학</h2>
+      <div id="testList"></div>
+      <button class="add-btn" type="button" data-add="공인 외국어 시험" data-target="testList">공인 외국어 시험 추가 ＋</button>
+    </section>
+
+    <section class="card" id="language">
+      <h2 class="section-title">외국어 능력</h2>
+      <div id="languageList"></div>
+      <button class="add-btn" type="button" data-add="외국어 능력" data-target="languageList">외국어 능력 추가 ＋</button>
+    </section>
+
+    <section class="card" id="essay">
+      <h2 class="section-title">자기소개서</h2>
+      <div class="question">
+        <p class="qnum">1.</p>
+        <p class="qtext">SK이노베이션 조직문화 부서 인턴에 지원하게 된 동기와, 본인의 경험 및 역량을 바탕으로 해당 직무에 기여할 수 있는 점을 서술해 주십시오. *</p>
+        <textarea class="textarea persist limited" maxlength="1000"></textarea><div class="counter">0/1,000</div>
+      </div>
+    </section>
+
+    <section class="card" id="agree">
+      <h2 class="section-title">동의 사항</h2>
+      <p class="agree-title">비밀유지서약서 *</p>
+      <label class="checkline"><input class="persist" type="checkbox">본인은 해당 지원서와 채용 과정 중에 습득하게 된 정보에 대한 비밀유지에 동의합니다.</label>
+    </section>
+
+    <section class="notice">
+      <strong><span class="notice-icon">✓</span>작성한 지원서를 ‘나의 이력서’로 저장해둡니다.</strong>
+      <p>‘나의 이력서’로 등록하면 지원서 작성시 작성된 정보(인적사항, 학력사항, 경력사항)를 자동으로 불러올 수 있습니다.</p>
+    </section>
+
+    <div class="actions">
+      <button class="save" id="saveBtn" type="button">임시 저장</button>
+      <button class="submit" id="submitBtn" type="button">최종 제출</button>
+    </div>
+  </main>
+
+  <button class="floating-nav" id="floatingNav" aria-label="목차 열기">☷</button>
+
+  <script>
+    const $ = (s, p=document) => p.querySelector(s);
+    const $$ = (s, p=document) => [...p.querySelectorAll(s)];
+
+    const drawer = $('#drawer');
+    const openDrawer = () => drawer.classList.add('open');
+    const closeDrawer = () => drawer.classList.remove('open');
+    $('#menuBtn').addEventListener('click', openDrawer);
+    $('#floatingNav').addEventListener('click', openDrawer);
+    $('#drawerClose').addEventListener('click', closeDrawer);
+    $$('#drawer a').forEach(a => a.addEventListener('click', closeDrawer));
+
+    $$('.choice-row').forEach(row => {
+      row.addEventListener('click', e => {
+        if(!e.target.classList.contains('choice')) return;
+        $$('.choice', row).forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        saveAll();
+      });
+    });
+
+    $$('.limited').forEach(t => {
+      const counter = t.nextElementSibling;
+      const update = () => counter.textContent = `${t.value.length.toLocaleString()}/1,000`;
+      t.addEventListener('input', update); update();
+    });
+
+    function addBlock(type, targetId, data={}) {
+      const wrap = document.createElement('div');
+      wrap.className = 'added';
+      wrap.innerHTML = `
+        <strong>${type} 정보</strong>
+        <input placeholder="${type}명 또는 기관명" value="${data.name || ''}">
+        <input placeholder="기간 또는 취득일" value="${data.period || ''}">
+        <input placeholder="세부 내용" value="${data.detail || ''}">
+        <button class="remove" type="button">삭제</button>`;
+      wrap.querySelector('.remove').onclick = () => { wrap.remove(); saveAll(); };
+      wrap.querySelectorAll('input').forEach(i => i.addEventListener('input', saveAll));
+      document.getElementById(targetId).appendChild(wrap);
+    }
+
+    $$('[data-add]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        addBlock(btn.dataset.add, btn.dataset.target);
+        saveAll();
+      });
+    });
+
+    function serializeAdded(targetId){
+      return $$('.added', document.getElementById(targetId)).map(w => {
+        const inputs = $$('input', w);
+        return {name:inputs[0].value, period:inputs[1].value, detail:inputs[2].value,
+                type:w.querySelector('strong').textContent.replace(' 정보','')};
+      });
+    }
+
+    function saveAll(){
+      const values = $$('.persist').map(el => ({
+        type: el.type, value: el.type === 'checkbox' ? el.checked : el.value
+      }));
+      const choices = $$('.choice-row').map(row => $('.choice.active', row)?.textContent || '');
+      const added = {};
+      ['educationList','careerList','licenseList','testList','languageList'].forEach(id => added[id]=serializeAdded(id));
+      localStorage.setItem('skcareers_mock', JSON.stringify({values,choices,added}));
+    }
+
+    function loadAll(){
+      const raw = localStorage.getItem('skcareers_mock');
+      if(!raw) return;
+      try{
+        const data = JSON.parse(raw);
+        $$('.persist').forEach((el,i) => {
+          const item = data.values?.[i]; if(!item) return;
+          if(el.type === 'checkbox') el.checked = item.value;
+          else el.value = item.value;
+        });
+        $$('.choice-row').forEach((row,i) => {
+          const selected = data.choices?.[i];
+          $$('.choice',row).forEach(b => b.classList.toggle('active', b.textContent === selected));
+        });
+        Object.entries(data.added || {}).forEach(([id,items]) => {
+          items.forEach(item => addBlock(item.type,id,item));
+        });
+        $$('.limited').forEach(t => t.dispatchEvent(new Event('input')));
+      }catch(e){}
+    }
+    loadAll();
+
+    $$('.persist').forEach(el => el.addEventListener(el.type==='checkbox'?'change':'input', saveAll));
+    $('#saveBtn').addEventListener('click', () => {
+      saveAll();
+      alert('입력 내용이 이 브라우저에 임시 저장되었습니다.');
+    });
+    $('#submitBtn').addEventListener('click', () => {
+      const agreed = $('#agree input[type=checkbox]').checked;
+      if(!agreed){ alert('비밀유지서약서에 동의해 주세요.'); return; }
+      alert('이 페이지는 연습용 HTML이므로 실제 SK Careers로 제출되지는 않습니다.');
+    });
+  </script>
+</body>
+</html>
